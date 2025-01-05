@@ -2,3 +2,29 @@
 
 html, body { height: 100%; }
 body { background: #F2F3F7; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* --- FORM USER ----*/
+form{
+    width: 450px;
+    margin: 0 auto;
+}
+
+.form-group-user {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.form-group-user label {
+    font-weight: bold;
+    font-size: .9em;
+    margin-bottom: .4em;
+}
+
+.form-group-user input,
+.form-group-user textarea {
+    padding: 0.6em;
+    color: #777;
+    font-size: 0.8em;
+}
