@@ -1,13 +1,46 @@
 import { Routes } from '@angular/router';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PainelComponent } from './pages/painel/painel.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
-//import { NavComponent } from './components/nav/nav.component';
+import { PainelComponent } from './pages/painel/painel.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
-    {path: 'painel', component: PainelComponent},
-    {path: 'cursos', component: CursosComponent},
-    {path: 'user-create', component: UserFormComponent},
+  {
+    path: '',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'cadastro',
+    component: UserFormComponent
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children:[
+
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'Home'
+      },
+      {
+        path: 'painel',
+        component: PainelComponent,
+        title: 'Painel'
+      },
+      {
+        path: 'cursos',
+        component: CursosComponent,
+        title: 'Cursos'
+      }
+    ]
+
+  }
 ];

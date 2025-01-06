@@ -5,10 +5,7 @@ body { background: #F2F3F7; margin: 0; font-family: Roboto, "Helvetica Neue", sa
 
 
 /* --- FORM USER ----*/
-form{
-    width: 450px;
-    margin: 0 auto;
-}
+
 
 .form-group-user {
     display: flex;
