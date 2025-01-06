@@ -1,0 +1,39 @@
+/* Form */
+
+.user-form{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: #FFF;
+    padding: 25px 30px;
+    border-radius: 25px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Button */
+.div-button{
+    text-align: center;
+}
+
+.custom-button {
+    background: linear-gradient(90deg, #4776e6, #8e57e9);
+    color: white !important;
+    margin: 8px;
+    border: none;
+}
+  
+.custom-button:hover {
+    background: linear-gradient(90deg, #8e57e9, #4776e6);
+}

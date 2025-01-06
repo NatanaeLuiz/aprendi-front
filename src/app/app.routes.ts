@@ -16,10 +16,8 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: 'cadastro',
-    component: UserFormComponent
-  },
+  { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
+  //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {
     path: '',
     component: LayoutComponent,
