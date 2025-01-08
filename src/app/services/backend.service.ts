@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  url: string = 'http://localhost:8085'
+  private url: string = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
   getCurso(){
