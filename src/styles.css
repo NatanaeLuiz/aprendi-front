@@ -4,6 +4,19 @@ html, body { height: 100%; }
 body { background: #F2F3F7; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+/* Estilo para a versão desktop */
+.app-wrapper {
+    position: relative;
+    display: grid;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 992px) {
+.app-wrapper {
+    display: block;
+}
+}
+
 /* --- FORM USER ----*/
 
 
