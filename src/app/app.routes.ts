@@ -9,15 +9,13 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 export const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
     path: 'login',
     component: LoginComponent
   },
-  { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
-  //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {
     path: '',
     component: LayoutComponent,
@@ -39,6 +37,11 @@ export const routes: Routes = [
         title: 'Cursos'
       }
     ]
-
+  },
+  { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
+    //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
+  {
+    path: '**', // Redirecionamento para página não encontrada
+    redirectTo: '/login'
   }
 ];
