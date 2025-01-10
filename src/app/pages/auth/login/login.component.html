@@ -1,0 +1,29 @@
+<div class="login-page bg-body-secondary">
+  <div class="login-box">
+      <div class="login-logo"> <a href="../index2.html"><b>Curso</b>EAD</a> </div> <!-- /.login-logo -->
+      <div class="card">
+          <div class="card-body login-card-body">
+              <p class="login-box-msg">Entre para iniciar sua sessão</p>
+              <form action="../index3.html" method="post">
+                  <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" [(ngModel)]="username" [ngModelOptions]="{ standalone: true }">
+                      <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
+                  </div>
+                  <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="password" [ngModelOptions]="{ standalone: true }">
+                      <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
+                  </div> <!--begin::Row-->
+                  <div class="row">
+                      <div class="social-auth-links text-center mb-3 d-grid gap-2">
+                          <div class="d-grid gap-2"><button type="button" class="btn btn-success" (click)="onLogin(username, password)">Entrar</button> </div>
+                      </div> <!-- /.col -->
+                  </div> <!--end::Row-->
+              </form>
+              <div class="social-auth-links text-center mb-3 d-grid gap-2">
+                <a [routerLink]="'/cadastro'" class="btn btn-primary"> Cadastre-se </a>
+              </div> <!-- /.social-auth-links -->
+              <p class="mb-1"> <a href="forgot-password.html">Esqueci meus dados de acesso</a> </p>
+
+          </div> <!-- /.login-card-body -->
+      </div>
+  </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+
+</div><!--end::Body-->

@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { HomeComponent } from './pages/home/home.component';
-import { CursosComponent } from './pages/cursos/cursos.component';
-import { PainelComponent } from './pages/painel/painel.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { HomeComponent } from './pages/aluno/home/home.component';
+import { PainelComponent } from './pages/aluno/painel/painel.component';
+import { UserFormComponent } from './pages/auth/cadastrar/user-form/user-form.component';
+import { MeusCursosComponent } from './pages/aluno/meus-cursos/meus-cursos.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/aluno/home',
     pathMatch: 'full'
   },
   {
@@ -17,14 +18,13 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
+    path: 'aluno',
     component: LayoutComponent,
     children:[
-
       {
-        path: 'home',
-        component: HomeComponent,
-        title: 'Home'
+        path: 'meus-cursos',
+        component: MeusCursosComponent,
+        title: 'meus-cursos'
       },
       {
         path: 'painel',
@@ -32,9 +32,20 @@ export const routes: Routes = [
         title: 'Painel'
       },
       {
-        path: 'cursos',
-        component: CursosComponent,
-        title: 'Cursos'
+        path: 'home',
+        component: HomeComponent,
+        title: 'Home'
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    component: LayoutComponent,
+    children:[
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        title: 'Dashboard'
       }
     ]
   },
