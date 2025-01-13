@@ -54,7 +54,7 @@
                         </li> <!--end::Menu Body--> <!--begin::Menu Footer-->
                          <li class="user-body"> <!--begin::Row-->
                           <div class="col-4 text-center">
-                            <a [routerLink]="['/login']" class="text-danger">
+                            <a [routerLink]="['/login']" (click)="onClick()" class="text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>

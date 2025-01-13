@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './pages/aluno/home/home.component';
 import { PainelComponent } from './pages/aluno/painel/painel.component';
 import { UserFormComponent } from './pages/auth/cadastrar/user-form/user-form.component';
 import { MeusCursosComponent } from './pages/aluno/meus-cursos/meus-cursos.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { LayoutAlunoComponent } from './pages/aluno/layout/layout-aluno';
+import { LayoutAdminComponent } from './pages/admin/layout/layout-admin';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/aluno/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -19,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'aluno',
-    component: LayoutComponent,
+    component: LayoutAlunoComponent,
     children:[
       {
         path: 'meus-cursos',
@@ -40,7 +41,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: LayoutComponent,
+    component: LayoutAdminComponent,
     children:[
       {
         path: 'dashboard',
