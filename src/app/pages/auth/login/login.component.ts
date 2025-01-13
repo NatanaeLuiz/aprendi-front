@@ -22,9 +22,9 @@ export class LoginComponent {
 
     this.authService.login(username, password).subscribe(user => {
       if (user.role === 'admin') {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/dashboard']);
       } else if (user.role === 'aluno') {
-        this.router.navigate(['/aluno']);
+        this.router.navigate(['/aluno/meus-cursos']);
       }
     });
   }
