@@ -5,6 +5,8 @@ import { PainelComponent } from './pages/aluno/painel/painel.component';
 import { UserFormComponent } from './pages/auth/cadastrar/user-form/user-form.component';
 import { MeusCursosComponent } from './pages/aluno/meus-cursos/meus-cursos.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { CursosComponent } from './pages/admin/cursos/cursos.component';
+import { CalendarioComponent } from './pages/admin/calendario/calendario.component';
 import { LayoutAlunoComponent } from './pages/aluno/layout/layout-aluno';
 import { LayoutAdminComponent } from './pages/admin/layout/layout-admin';
 
@@ -47,6 +49,16 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         title: 'Dashboard'
+      },
+      {
+        path: 'cursos',
+        component: CursosComponent,
+        title: 'Cursos'
+      },
+      {
+        path: 'calendario',
+        component: CalendarioComponent,
+        title: 'Calendaio'
       }
     ]
   },

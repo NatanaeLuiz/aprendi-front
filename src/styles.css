@@ -38,3 +38,14 @@ body { background: #F2F3F7; margin: 0; font-family: Roboto, "Helvetica Neue", sa
     color: #777;
     font-size: 0.8em;
 }
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* Espaço entre o texto e o ícone */
+}
