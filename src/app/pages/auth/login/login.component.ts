@@ -19,7 +19,7 @@ export class LoginComponent {
   router = inject(Router)
 
   onLogin(username: string, password: string) {
-    
+
     this.authService.login(username, password).subscribe(user => {
       if (user.role === 'admin') {
         this.router.navigate(['/admin']);
