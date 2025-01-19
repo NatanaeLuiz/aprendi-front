@@ -6,7 +6,7 @@ import { AuthService } from '../../auth/login/service/auth.service';
 
 
 @Component({
-  selector: 'app-layout',
+  selector: 'app-layout-admin',
   imports: [RouterOutlet, HeaderAdminComponent, SidebarAdminComponent],
   templateUrl: './layout-admin.component.html',
   styleUrl: './layout-admin.component.css'
@@ -21,5 +21,5 @@ export class LayoutAdminComponent {
     this.userRole = this.authService.getUserRole();
   }
 
-  
+
 }

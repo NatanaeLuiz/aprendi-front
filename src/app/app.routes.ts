@@ -9,6 +9,11 @@ import { CursosComponent } from './pages/admin/cursos/cursos.component';
 import { CalendarioComponent } from './pages/admin/calendario/calendario.component';
 import { LayoutAlunoComponent } from './pages/aluno/layout/layout-aluno';
 import { LayoutAdminComponent } from './pages/admin/layout/layout-admin';
+import { CadastroCurso } from './pages/admin/FormsCadastros/cadastro-curso/cadastro-curso.component';
+import { CadastroAluno } from './pages/admin/FormsCadastros/cadastro-aluno/cadastro-aluno.component';
+import { AlunosComponent } from './pages/admin/alunos/alunos.component';
+import { CadastroModulo } from './pages/admin/FormsCadastros/cadastro-modulo/cadastro-modulo.component';
+import { CadastroAula } from './pages/admin/FormsCadastros/cadastro-aula/cadastro-aula.component';
 
 export const routes: Routes = [
   {
@@ -59,8 +64,33 @@ export const routes: Routes = [
         path: 'calendario',
         component: CalendarioComponent,
         title: 'Calendaio'
+      },
+      {
+        path: 'alunos',
+        component: AlunosComponent,
+        title: 'alunos'
+      },
+      {
+        path: 'cadastro-curso',
+        component: CadastroCurso,
+        title: 'Cadastro Curso'
+      },
+      {
+        path: 'cadastro-modulo',
+        component: CadastroModulo,
+        title: 'Cadastro Modulo'
+      },
+      {
+        path: 'cadastro-aula',
+        component: CadastroAula,
+        title: 'Cadastro Aula'
+      },
+      {
+        path: 'cadastro-aluno',
+        component: CadastroAluno,
+        title: 'Cadastro Aluno'
       }
-    ]
+      ]
   },
   { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
     //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },

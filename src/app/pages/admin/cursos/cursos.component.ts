@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BackendService } from '../../../services/backend.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CadastroCurso } from '../FormsCadastros/cadastro-curso/cadastro-curso.component';
 
 @Component({
   selector: 'app-cursos',
@@ -9,7 +12,9 @@ import { BackendService } from '../../../services/backend.service';
 })
 export class CursosComponent implements OnInit {
 
-  constructor(private backEnd: BackendService){
+  router = inject(Router)
+
+  constructor(private backEnd: BackendService, private dialog: MatDialog){
 
   }
 
@@ -20,4 +25,13 @@ export class CursosComponent implements OnInit {
         }
       })
   }
+  redirecionarCadastroCurso(){
+    this.router.navigate(['/admin/cadastro-curso']);
+  //   this.dialog.open(CadastroCurso, {
+  //     width: '50%', // Define a largura do diálogo
+  //     height: 'auto', // Define a altura automática (opcional)
+  //     disableClose: true, // Para impedir o fechamento ao clicar fora do diálogo
+  //   });
+
+   }
 }

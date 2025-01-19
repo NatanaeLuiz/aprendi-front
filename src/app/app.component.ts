@@ -21,6 +21,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
@@ -41,7 +44,10 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatIconModule,
     MatListModule,
-    MatCardModule],
+    MatCardModule,
+    CommonModule,
+    MatDialogModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
