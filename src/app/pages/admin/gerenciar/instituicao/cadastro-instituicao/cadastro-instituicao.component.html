@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+  <!-- Content Header -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2"></div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastro de Instituição</h3>
+            </div>
+            <form>
+              <div class="card-body">
+                <!-- Nome da Instituição -->
+                <div class="form-group mb-3">
+                  <label for="nomeInstituicao">Nome da Instituição</label>
+                  <input type="text" class="form-control" id="nomeInstituicao" placeholder="Digite o nome da instituição" required />
+                </div>
+
+                <!-- CPF ou CNPJ -->
+                <div class="form-group mb-3">
+                  <label for="cpfOuCnpj">CPF ou CNPJ</label>
+                  <input type="text" class="form-control" id="cpfOuCnpj" placeholder="Digite o CPF ou CNPJ" required />
+                </div>
+
+
+                <!-- Quantidade de Licenças para Professores -->
+                <div class="form-group mb-3">
+                  <label for="quantidadeLicencasProfessor">Quantidade de Licenças para Professores</label>
+                  <input type="number" class="form-control" id="quantidadeLicencasProfessor" placeholder="Digite a quantidade de licenças para professores" />
+                </div>
+
+                <!-- Quantidade de Licenças para Alunos -->
+                <div class="form-group mb-3">
+                  <label for="quantidadeLicencasAluno">Quantidade de Licenças para Alunos</label>
+                  <input type="number" class="form-control" id="quantidadeLicencasAluno" placeholder="Digite a quantidade de licenças para alunos" />
+                </div>
+
+
+              </div>
+
+              <!-- Botões de Ação -->
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/instituicao']">Cancelar</button>
+                <button type="submit" class="btn btn-success" [routerLink]="['/admin/instituicao']" style="margin-left: 15px;">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

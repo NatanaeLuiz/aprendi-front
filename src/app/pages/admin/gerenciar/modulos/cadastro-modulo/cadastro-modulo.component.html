@@ -1,0 +1,72 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastro de Módulo</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+              <div class="card-body">
+                <!-- Título do Módulo -->
+                <div class="form-group mb-3">
+                  <label for="tituloModulo">Título do Módulo</label>
+                  <input type="text" class="form-control" id="tituloModulo" placeholder="Digite o título do módulo" required />
+                </div>
+
+                <!-- Descrição do Módulo -->
+                <div class="form-group mb-3">
+                  <label for="descricaoModulo">Descrição</label>
+                  <input type="text" class="form-control" id="descricaoModulo" placeholder="Digite a descrição do módulo" />
+                </div>
+
+                <!-- Ordem do Módulo -->
+                <div class="form-group mb-3">
+                  <label for="ordemModulo">Ordem do Módulo</label>
+                  <input type="number" class="form-control" id="ordemModulo" placeholder="Digite a ordem do módulo" />
+                </div>
+
+                 <!-- Curso relacionado -->
+                 <div class="form-group mb-3">
+                  <label for="curso">Curso Relacionado</label>
+                  <select class="form-control" id="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <!-- Exemplo de opções que podem ser populadas dinamicamente -->
+                    <option value="1">Curso de Programação</option>
+                    <option value="2">Curso de Design</option>
+                    <option value="3">Curso de Matemática</option>
+                  </select>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="'/admin/modulos'">Cancelar</button>
+                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Salvar</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>

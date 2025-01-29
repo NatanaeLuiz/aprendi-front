@@ -1,0 +1,83 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastro de Aula</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+              <div class="card-body">
+                <!-- Título da Aula -->
+                <div class="form-group mb-3">
+                  <label for="tituloAula">Título</label>
+                  <input type="text" class="form-control" id="tituloAula" placeholder="Digite o título da aula" required />
+                </div>
+
+                <!-- Descrição da Aula -->
+                <div class="form-group mb-3">
+                  <label for="descricaoAula">Descrição</label>
+                  <input type="text" class="form-control" id="descricaoAula" placeholder="Digite a descrição da Aula" />
+                </div>
+
+                <!-- Duração da Aula -->
+                <div class="form-group mb-3">
+                  <label for="duracaoAula">Duração</label>
+                  <input type="number" class="form-control" id="duracaoAula" placeholder="Digite a duração da aula (em minutos)" />
+                </div>
+
+                <!-- Ordem da Aula -->
+                <div class="form-group mb-3">
+                  <label for="ordemAula">Ordem</label>
+                  <input type="number" class="form-control" id="ordemAula" placeholder="Digite a ordem da aula" />
+                </div>
+
+                <!-- Módulo relacionado -->
+                <div class="form-group mb-3">
+                  <label for="modulo">Módulo</label>
+                  <select class="form-control" id="modulo" required>
+                    <option value="">Selecione um Módulo</option>
+                    <!-- Exemplo de opções que podem ser populadas dinamicamente -->
+                    <option value="1">Módulo 1</option>
+                    <option value="2">Módulo 2</option>
+                    <option value="3">Módulo 3</option>
+                  </select>
+                </div>
+
+                <!-- Anexo de vídeo -->
+                <div class="form-group mb-3">
+                  <label for="videoAula">Anexo de Vídeo</label>
+                  <input type="file" class="form-control" id="videoAula" accept="video/*" />
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="'/admin/aulas'">Cancelar</button>
+                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Salvar</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
