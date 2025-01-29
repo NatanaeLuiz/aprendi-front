@@ -1,0 +1,76 @@
+<div class="content-wrapper" >
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2"></div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastro de Administrador</h3>
+            </div>
+            <form>
+              <div class="card-body">
+                <!-- Nome do Professor -->
+                <div class="form-group mb-3">
+                  <label for="nomeProfessor">Nome do Administrador</label>
+                  <input type="text" class="form-control" id="nomeAdministrador" placeholder="Digite o nome do Administrador" required />
+                </div>
+
+                <!-- Sobrenome -->
+                <div class="form-group mb-3">
+                  <label for="sobrenomeAdministrador">Sobrenome</label>
+                  <input type="text" class="form-control" id="sobrenomeAdministrador" placeholder="Digite o sobrenome do Administrador" />
+                </div>
+
+                 <!-- Perfil -->
+                 <div class="form-group mb-3">
+                  <label for="instituicao">Perfil</label>
+                  <select class="form-control" id="perfil" required>
+                    <option *ngFor="let perf of perfis" [value]="perf">{{ perf.nome }}</option>
+                  </select>
+                </div>
+
+                <!-- Instituição -->
+                <div class="form-group mb-3">
+                  <label for="instituicao">Instituição</label>
+                  <select class="form-control" id="instituicao" required>
+                    <option *ngFor="let inst of instituicoes" [value]="inst">{{ inst.nome }}</option>
+                  </select>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-3">
+                  <label for="emailAdministrador">Email</label>
+                  <input type="email" class="form-control" id="emailAdministrador" placeholder="Digite o email" required />
+                </div>
+
+                <!-- Senha -->
+                <div class="form-group mb-3">
+                  <label for="senhaAdministrador">Senha</label>
+                  <input type="password" class="form-control" id="senhaAdministrador" placeholder="Digite a senha" required />
+                </div>
+
+                <!-- Telefone -->
+                <div class="form-group mb-3">
+                  <label for="telefoneAdministrador">Telefone</label>
+                  <input type="text" class="form-control" id="telefoneAdministrador" placeholder="Digite o telefone" />
+                </div>
+
+              </div>
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/administrador']">Cancelar</button>
+                <button type="submit" class="btn btn-primary" [routerLink]="['/admin/administrador']" style="margin-left: 15px;">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

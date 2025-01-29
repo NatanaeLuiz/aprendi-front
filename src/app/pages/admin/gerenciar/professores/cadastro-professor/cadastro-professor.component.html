@@ -1,0 +1,75 @@
+<div class="content-wrapper" >
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2"></div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastro de Professor</h3>
+            </div>
+            <form>
+              <div class="card-body">
+                <!-- Nome do Professor -->
+                <div class="form-group mb-3">
+                  <label for="nomeProfessor">Nome do Professor</label>
+                  <input type="text" class="form-control" id="nomeProfessor" placeholder="Digite o nome do Professor" required />
+                </div>
+
+                <!-- Sobrenome -->
+                <div class="form-group mb-3">
+                  <label for="sobrenomeProfessor">Sobrenome</label>
+                  <input type="text" class="form-control" id="sobrenomeProfessor" placeholder="Digite o sobrenome do Professor" />
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-3">
+                  <label for="emailProfessor">Email</label>
+                  <input type="email" class="form-control" id="emailProfessor" placeholder="Digite o email" required />
+                </div>
+
+                <!-- Senha -->
+                <div class="form-group mb-3">
+                  <label for="senhaProfessor">Senha</label>
+                  <input type="password" class="form-control" id="senhaProfessor" placeholder="Digite a senha" required />
+                </div>
+
+                <!-- Telefone -->
+                <div class="form-group mb-3">
+                  <label for="telefoneProfessor">Telefone</label>
+                  <input type="text" class="form-control" id="telefoneProfessor" placeholder="Digite o telefone" />
+                </div>
+
+                <!-- Instituição -->
+                <div class="form-group mb-3">
+                  <label for="instituicao">Instituição</label>
+                  <select class="form-control" id="instituicao" required>
+                    <option *ngFor="let inst of instituicoes" [value]="inst">{{ inst.nome }}</option>
+                  </select>
+                </div>
+
+                <!-- Cursos -->
+                <div class="form-group mb-3">
+                  <label for="curso">Cursos</label>
+                  <select class="form-control" id="curso" required>
+                    <option *ngFor="let curso of cursosDisponiveis" [value]="curso">{{ curso.nome }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/professor']">Cancelar</button>
+                <button type="submit" class="btn btn-primary" [routerLink]="['/admin/professor']" style="margin-left: 15px;">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -6,7 +6,7 @@ import { SidebarAlunoComponent } from '../sidebar/sidebar-aluno.component';
 
 
 @Component({
-  selector: 'app-layout',
+  selector: 'app-layout-aluno',
   imports: [RouterOutlet, HeaderAlunoComponent, SidebarAlunoComponent],
   templateUrl: './layout-aluno.component.html',
   styleUrl: './layout-aluno.component.css'
@@ -21,5 +21,5 @@ export class LayoutAlunoComponent {
     this.userRole = this.authService.getUserRole();
   }
 
-  
+
 }
