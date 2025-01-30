@@ -9,7 +9,6 @@ import { CalendarioComponent } from './pages/admin/calendario/calendario.compone
 import { LayoutAlunoComponent } from './pages/aluno/layout/layout-aluno';
 import { LayoutAdminComponent } from './pages/admin/layout/layout-admin';
 import { ListarInstituicaoComponent } from './pages/admin/gerenciar/instituicao/listar-institucao/listar-instituicao.component';
-import { CadastroInstituicao } from './pages/admin/gerenciar/instituicao/cadastro-instituicao/cadastro-instituicao.component';
 import { ListarCursosComponent } from './pages/admin/gerenciar/cursos/listar-cursos/listar-cursos.component';
 import { ListarModulosComponent } from './pages/admin/gerenciar/modulos/listar-modulos/listar-modulos.component';
 import { ListarAulasComponent } from './pages/admin/gerenciar/aulas/listar-aulas/listar-aulas.component';
@@ -22,6 +21,7 @@ import { ListarProfessorComponent } from './pages/admin/gerenciar/professores/li
 import { CadastroProfessor } from './pages/admin/gerenciar/professores/cadastro-professor/cadastro-professor.component';
 import { ListarAdministradorComponent } from './pages/admin/gerenciar/administradores/listar-administrador/listar-administrador.component';
 import { CadastroAdministrador } from './pages/admin/gerenciar/administradores/cadastro-administrador/cadastro-administrador.component';
+import { CadastroInstituicaoComponent } from './pages/admin/gerenciar/instituicao/cadastro-instituicao/cadastro-instituicao.component';
 
 export const routes: Routes = [
   {
@@ -70,7 +70,7 @@ export const routes: Routes = [
       },
       {
         path: 'cadastro-instituicao',
-        component: CadastroInstituicao,
+        component: CadastroInstituicaoComponent,
         title: 'Cadastro Instituição'
       },
       {
