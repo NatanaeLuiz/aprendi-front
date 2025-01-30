@@ -23,7 +23,7 @@
                 <!-- Nome da Instituição -->
                 <div class="form-group mb-3">
                   <label for="nomeInstituicao">Nome da Instituição</label>
-                  <input type="text" class="form-control" [(ngModel)]="instituicao.nome" name="nomeInstituicao" required #nome="ngModel"/>
+                  <input type="text" class="form-control" [(ngModel)]="instituicao.nomeInstituicao" name="nomeInstituicao" required #nome="ngModel"/>
                   <div *ngIf="nome.invalid && nome.touched" class="text-danger">O nome é obrigatório</div>
                 </div>
 

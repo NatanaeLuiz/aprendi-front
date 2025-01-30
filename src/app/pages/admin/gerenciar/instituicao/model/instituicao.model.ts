@@ -1,5 +1,5 @@
 export interface Instituicao {
-  nome: string;
+  nomeInstituicao: string;
   cpfOuCnpj: string;
   quantidadeLicencasProfessor: number | null;
   quantidadeLicencasAluno: number | null;
