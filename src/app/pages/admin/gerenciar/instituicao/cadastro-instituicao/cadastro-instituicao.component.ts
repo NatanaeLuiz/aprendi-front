@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class CadastroInstituicaoComponent implements OnInit {
 
   instituicao: Instituicao = {
-    nome: '',
+    nomeInstituicao: '',
     cpfOuCnpj: '',
     quantidadeLicencasProfessor: null,
     quantidadeLicencasAluno: null
