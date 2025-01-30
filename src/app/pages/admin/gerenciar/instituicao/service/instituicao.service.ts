@@ -21,4 +21,14 @@ export class InstituicaoService {
         })
       );
   }
+
+  listarInstituicoes(): Observable<Instituicao[]> {
+    return this.http.get<Instituicao[]>(`${this.apiUrl}/instituicoes`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao listar instituições:', error);
+          return throwError(() => new Error('Erro ao listar instituições. Tente novamente.'));
+        })
+      );
+  }
 }
