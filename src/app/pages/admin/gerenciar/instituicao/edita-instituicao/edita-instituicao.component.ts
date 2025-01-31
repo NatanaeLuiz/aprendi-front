@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { InstituicaoService } from '../service/instituicao.service';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-instituicao',
   templateUrl: './edita-instituicao.component.html',
   styleUrl: './edita-instituicao.component.css',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink]
+  imports: [
+    CommonModule,
+    FormsModule,
+    BrowserAnimationsModule
+  ]
 })
 export class EditaInstituicaoComponent implements OnInit {
 
@@ -54,7 +59,7 @@ export class EditaInstituicaoComponent implements OnInit {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         this.instituicao = instituicaoAtualizada
-        this.toastr.success('Instituição editada com sucesso!')
+        this.showSuccess()
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';
@@ -62,5 +67,8 @@ export class EditaInstituicaoComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+  showSuccess() {
+    this.toastr.success('Instituição atualizada com sucesso!', 'Sucesso!');
   }
 }
