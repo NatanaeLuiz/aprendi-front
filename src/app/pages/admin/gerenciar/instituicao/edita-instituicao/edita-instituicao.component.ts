@@ -49,10 +49,11 @@ export class EditaInstituicaoComponent implements OnInit {
     this.mensagemSucesso = null;
 
     this.instituicaoService.editarInstituicao(this.instituicao.cpfOuCnpj, this.instituicao).subscribe({
-      next: () => {
+      next: (instituicaoAtualizada) => {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         form.resetForm();
+        this.instituicao = instituicaoAtualizada
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao eidtar instituição. Tente novamente.';
