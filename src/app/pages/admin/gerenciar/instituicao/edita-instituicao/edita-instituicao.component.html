@@ -14,7 +14,7 @@
               <h3 class="card-title">Editar Instituição</h3>
             </div>
 
-            <form #form="ngForm" (ngSubmit)="salvarInstituicao(form)">
+            <form #form="ngForm" (ngSubmit)="editarInstituicao(form)">
               <div class="card-body">
                 <!-- Mensagens -->
                 <div *ngIf="mensagemSucesso" class="alert alert-success">{{ mensagemSucesso }}</div>
@@ -52,9 +52,7 @@
               <div class="card-footer">
                 <button type="button" class="btn btn-danger" [routerLink]="['/admin/instituicao']">Cancelar</button>
                 <button type="submit" class="btn btn-success" [disabled]="isLoading || form.invalid">
-                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
-                  Salvar
-                </button>
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span> Editar </button>
               </div>
             </form>
           </div>

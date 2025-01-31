@@ -22,6 +22,16 @@ export class InstituicaoService {
       );
   }
 
+  editarInstituicao(cpfOuCnpj: String, instituicao: Instituicao): Observable<Instituicao> {
+    return this.http.put<Instituicao>(`${this.apiUrl}/instituicoes/atualizar/${cpfOuCnpj}`, instituicao)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao atualizar instituição:', error);
+          return throwError(() => new Error('Erro ao atualizar instituição. Tente novamente.'));
+        })
+      );
+  }
+
   listarInstituicoes(): Observable<Instituicao[]> {
     return this.http.get<Instituicao[]>(`${this.apiUrl}/instituicoes`)
       .pipe(
@@ -31,4 +41,7 @@ export class InstituicaoService {
         })
       );
   }
+
+
+
 }

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listar-instituicao.component.html',
   styleUrl: './listar-instituicao.component.css',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink]
+  imports: [FormsModule, CommonModule]
 })
 export class ListarInstituicaoComponent implements OnInit {
 
@@ -21,6 +21,13 @@ export class ListarInstituicaoComponent implements OnInit {
   mensagemSucesso: string | null = null;
   mensagemErro: string | null = null;
   instituicoes: Instituicao[] = [];
+
+  instituicao: Instituicao = {
+    nomeInstituicao: '',
+    cpfOuCnpj: '',
+    quantidadeLicencasProfessor: null,
+    quantidadeLicencasAluno: null
+  };
 
   constructor(private backEnd: BackendService,
      private dialog: MatDialog,
@@ -45,6 +52,12 @@ export class ListarInstituicaoComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  editarInstituicao(instituicao: Instituicao){
+
+   //this.instituicaoService.setInstituicao(instituicao);
+    this.router.navigate(['/admin/edita-instituicao'], {state: {instituicao}});
   }
 
   redirecionarCadastroInstituicao(){

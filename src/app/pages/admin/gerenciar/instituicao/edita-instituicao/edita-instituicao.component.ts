@@ -29,12 +29,16 @@ export class EditaInstituicaoComponent implements OnInit {
   constructor(private instituicaoService: InstituicaoService) {}
 
   ngOnInit(): void {
-    this.instituicao.nomeInstituicao = 'Instituição nome Teste';
+
+   const state = history.state;
+
+   if(state && state.instituicao) {
+      this.instituicao = state.instituicao;
+   }
+
   }
 
-
-
-  salvarInstituicao(form: NgForm): void {
+  editarInstituicao(form: NgForm): void {
     if (form.invalid) {
       this.mensagemErro = 'Preencha todos os campos obrigatórios!';
       return;
@@ -44,14 +48,14 @@ export class EditaInstituicaoComponent implements OnInit {
     this.mensagemErro = null;
     this.mensagemSucesso = null;
 
-    this.instituicaoService.cadastrarInstituicao(this.instituicao).subscribe({
+    this.instituicaoService.editarInstituicao(this.instituicao.cpfOuCnpj, this.instituicao).subscribe({
       next: () => {
-        this.mensagemSucesso = 'Instituição cadastrada com sucesso!';
+        this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         form.resetForm();
       },
       error: (error) => {
-        this.mensagemErro = 'Erro ao cadastrar instituição. Tente novamente.';
+        this.mensagemErro = 'Erro ao eidtar instituição. Tente novamente.';
         console.error(error);
         this.isLoading = false;
       }
