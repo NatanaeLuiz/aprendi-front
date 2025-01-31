@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { InstituicaoService } from '../service/instituicao.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-instituicao',
@@ -12,10 +12,13 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 })
 export class EditaInstituicaoComponent implements OnInit {
+
+  router = inject(Router)
 
   instituicao: Instituicao = {
     nomeInstituicao: '',
@@ -56,6 +59,8 @@ export class EditaInstituicaoComponent implements OnInit {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         this.instituicao = instituicaoAtualizada
+
+    this.router.navigate(['/admin/instituicao']);
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';
