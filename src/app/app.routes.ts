@@ -22,6 +22,7 @@ import { CadastroProfessor } from './pages/admin/gerenciar/professores/cadastro-
 import { ListarAdministradorComponent } from './pages/admin/gerenciar/administradores/listar-administrador/listar-administrador.component';
 import { CadastroAdministrador } from './pages/admin/gerenciar/administradores/cadastro-administrador/cadastro-administrador.component';
 import { CadastroInstituicaoComponent } from './pages/admin/gerenciar/instituicao/cadastro-instituicao/cadastro-instituicao.component';
+import { EditaInstituicaoComponent } from './pages/admin/gerenciar/instituicao/edita-instituicao/edita-instituicao.component';
 
 export const routes: Routes = [
   {
@@ -72,6 +73,11 @@ export const routes: Routes = [
         path: 'cadastro-instituicao',
         component: CadastroInstituicaoComponent,
         title: 'Cadastro Instituição'
+      },
+      {
+        path: 'edita-instituicao',
+        component: EditaInstituicaoComponent,
+        title: 'Editar Instituição'
       },
       {
         path: 'cursos',

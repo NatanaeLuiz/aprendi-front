@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listar-instituicao.component.html',
   styleUrl: './listar-instituicao.component.css',
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, RouterLink]
 })
 export class ListarInstituicaoComponent implements OnInit {
 

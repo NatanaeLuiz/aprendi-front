@@ -1,0 +1,65 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2"></div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Editar Instituição</h3>
+            </div>
+
+            <form #form="ngForm" (ngSubmit)="salvarInstituicao(form)">
+              <div class="card-body">
+                <!-- Mensagens -->
+                <div *ngIf="mensagemSucesso" class="alert alert-success">{{ mensagemSucesso }}</div>
+                <div *ngIf="mensagemErro" class="alert alert-danger">{{ mensagemErro }}</div>
+
+                <!-- Nome da Instituição -->
+                <div class="form-group mb-3">
+                  <label for="nomeInstituicao">Nome da Instituição</label>
+                  <input type="text" class="form-control" [(ngModel)]="instituicao.nomeInstituicao"
+                         name="nomeInstituicao" required #nome="ngModel"/>
+                  <div *ngIf="nome.invalid && nome.touched" class="text-danger">O nome é obrigatório</div>
+                </div>
+
+                <!-- CPF ou CNPJ -->
+                <div class="form-group mb-3">
+                  <label for="cpfOuCnpj">CPF ou CNPJ</label>
+                  <input type="text" class="form-control" [(ngModel)]="instituicao.cpfOuCnpj" name="cpfOuCnpj" required #cpfOuCnpj="ngModel"/>
+                  <div *ngIf="cpfOuCnpj.invalid && cpfOuCnpj.touched" class="text-danger">CPF ou CNPJ é obrigatório</div>
+                </div>
+
+                <!-- Licenças para Professores -->
+                <div class="form-group mb-3">
+                  <label for="quantidadeLicencasProfessor">Licenças para Professores</label>
+                  <input type="number" class="form-control" [(ngModel)]="instituicao.quantidadeLicencasProfessor" name="quantidadeLicencasProfessor"/>
+                </div>
+
+                <!-- Licenças para Alunos -->
+                <div class="form-group mb-3">
+                  <label for="quantidadeLicencasAluno">Licenças para Alunos</label>
+                  <input type="number" class="form-control" [(ngModel)]="instituicao.quantidadeLicencasAluno" name="quantidadeLicencasAluno"/>
+                </div>
+              </div>
+
+              <!-- Botões -->
+              <div class="card-footer">
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/instituicao']">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="isLoading || form.invalid">
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
