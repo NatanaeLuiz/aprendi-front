@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { InstituicaoService } from '../service/instituicao.service';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-instituicao',
@@ -13,6 +13,8 @@ import { RouterLink } from '@angular/router';
   imports: [FormsModule, CommonModule, RouterLink]
 })
 export class CadastroInstituicaoComponent implements OnInit {
+
+ router = inject(Router)
 
   instituicao: Instituicao = {
     nomeInstituicao: '',
@@ -45,7 +47,7 @@ export class CadastroInstituicaoComponent implements OnInit {
       next: () => {
         this.mensagemSucesso = 'Instituição cadastrada com sucesso!';
         this.isLoading = false;
-        form.resetForm();
+        this.router.navigate(['/admin/instituicao']);
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao cadastrar instituição. Tente novamente.';
