@@ -52,7 +52,6 @@ export class EditaInstituicaoComponent implements OnInit {
       next: (instituicaoAtualizada) => {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
-        form.resetForm();
         this.instituicao = instituicaoAtualizada
       },
       error: (error) => {
