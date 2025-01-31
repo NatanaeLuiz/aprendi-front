@@ -3,8 +3,6 @@ import { InstituicaoService } from '../service/instituicao.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -14,8 +12,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    BrowserAnimationsModule
+    FormsModule
   ]
 })
 export class EditaInstituicaoComponent implements OnInit {
@@ -32,7 +29,7 @@ export class EditaInstituicaoComponent implements OnInit {
   mensagemErro: string | null = null;
   instituicoes: Instituicao[] = [];
 
-  constructor(private instituicaoService: InstituicaoService, private toastr: ToastrService) {}
+  constructor(private instituicaoService: InstituicaoService) {}
 
   ngOnInit(): void {
 
@@ -59,7 +56,6 @@ export class EditaInstituicaoComponent implements OnInit {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         this.instituicao = instituicaoAtualizada
-        this.showSuccess()
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';
@@ -67,8 +63,5 @@ export class EditaInstituicaoComponent implements OnInit {
         this.isLoading = false;
       }
     });
-  }
-  showSuccess() {
-    this.toastr.success('Instituição atualizada com sucesso!', 'Sucesso!');
   }
 }
