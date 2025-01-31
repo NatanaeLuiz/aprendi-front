@@ -29,22 +29,6 @@ export class CadastroInstituicaoComponent implements OnInit {
   constructor(private instituicaoService: InstituicaoService) {}
 
   ngOnInit(): void {
-    this.listarTodasInsituicoes();
-  }
-
-  private listarTodasInsituicoes() {
-    this.isLoading = true;
-    this.instituicaoService.listarInstituicoes().subscribe({
-      next: (instituicoes) => {
-        this.instituicoes = instituicoes;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        this.mensagemErro = 'Erro ao listar todas as instituições.';
-        console.error(error);
-        this.isLoading = false;
-      }
-    });
   }
 
   salvarInstituicao(form: NgForm): void {

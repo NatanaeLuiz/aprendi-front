@@ -1,37 +1,54 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BackendService } from '../../../../../services/backend.service';
+import { Instituicao } from '../model/instituicao.model';
+import { InstituicaoService } from '../service/instituicao.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cursos',
-  imports: [],
   templateUrl: './listar-instituicao.component.html',
-  styleUrl: './listar-instituicao.component.css'
+  styleUrl: './listar-instituicao.component.css',
+  standalone: true,
+  imports: [FormsModule, CommonModule]
 })
 export class ListarInstituicaoComponent implements OnInit {
 
   router = inject(Router)
+  isLoading = false;
+  mensagemSucesso: string | null = null;
+  mensagemErro: string | null = null;
+  instituicoes: Instituicao[] = [];
 
-  constructor(private backEnd: BackendService, private dialog: MatDialog){
+  constructor(private backEnd: BackendService,
+     private dialog: MatDialog,
+    private instituicaoService: InstituicaoService){
 
   }
 
   ngOnInit(): void {
-      this.backEnd.getCurso().subscribe({
-        next: (Response) => {
-          console.log(Response);
-        }
-      })
+    this.listarTodasInsituicoes();
   }
+
+  private listarTodasInsituicoes() {
+    this.isLoading = true;
+    this.instituicaoService.listarInstituicoes().subscribe({
+      next: (instituicoes) => {
+        this.instituicoes = instituicoes;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.mensagemErro = 'Erro ao listar todas as instituições.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
+  }
+
   redirecionarCadastroInstituicao(){
     this.router.navigate(['/admin/cadastro-instituicao']);
-  //   this.dialog.open(CadastroCurso, {
-  //     width: '50%', // Define a largura do diálogo
-  //     height: 'auto', // Define a altura automática (opcional)
-  //     disableClose: true, // Para impedir o fechamento ao clicar fora do diálogo
-  //   });
-
    }
 
 }

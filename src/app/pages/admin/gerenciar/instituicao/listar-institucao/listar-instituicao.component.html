@@ -21,9 +21,7 @@
         <table class="table table-striped projects">
             <thead>
                 <tr>
-                    <th style="width: 1%">
-                        #
-                    </th>
+
                     <th style="width: 30%">
                         Nome da instituicao
                     </th>
@@ -38,58 +36,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngIf="instituicoes.length">
                     <td>
-                        #
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
+                        <a *ngFor="let instituicao of instituicoes">
+                            {{ instituicao.nomeInstituicao }}
                         </a>
                     </td>
                     <td>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <p> 53.417.015/0001-16</p>
+                                <p *ngFor="let instituicao of instituicoes">
+                                  {{ instituicao.cpfOuCnpj }} </p>
                             </li>
 
-                        </ul>
-                    </td>
-
-
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        #
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-
-                    </td>
-                    <td>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                              <p> 01.614.487/0001-65</p>
-                            </li>
                         </ul>
                     </td>
 
@@ -111,9 +70,6 @@
                         </a>
                     </td>
                 </tr>
-
-
-
             </tbody>
         </table>
       </div>
