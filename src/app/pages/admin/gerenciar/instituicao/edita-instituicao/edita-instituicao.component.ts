@@ -4,6 +4,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-instituicao',
@@ -26,7 +27,7 @@ export class EditaInstituicaoComponent implements OnInit {
   mensagemErro: string | null = null;
   instituicoes: Instituicao[] = [];
 
-  constructor(private instituicaoService: InstituicaoService) {}
+  constructor(private instituicaoService: InstituicaoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
 
@@ -53,9 +54,10 @@ export class EditaInstituicaoComponent implements OnInit {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
         this.instituicao = instituicaoAtualizada
+        this.toastr.success('Instituição editada com sucesso!')
       },
       error: (error) => {
-        this.mensagemErro = 'Erro ao eidtar instituição. Tente novamente.';
+        this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';
         console.error(error);
         this.isLoading = false;
       }
