@@ -42,6 +42,13 @@ export class InstituicaoService {
       );
   }
 
-
-
+  deleteInstituicao(cpfOuCnpj: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/instituicoes/${cpfOuCnpj}`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao deletar instituição:', error);
+          return throwError(() => new Error('Erro ao deletar instituição. Tente novamente.'));
+        })
+      );
+  }
 }

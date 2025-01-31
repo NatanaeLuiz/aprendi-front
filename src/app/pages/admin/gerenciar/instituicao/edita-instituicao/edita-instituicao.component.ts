@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Instituicao } from '../model/instituicao.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-instituicao',
@@ -32,16 +33,13 @@ export class EditaInstituicaoComponent implements OnInit {
   mensagemErro: string | null = null;
   instituicoes: Instituicao[] = [];
 
-  constructor(private instituicaoService: InstituicaoService) {}
+  constructor(private instituicaoService: InstituicaoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-
-   const state = history.state;
-
-   if(state && state.instituicao) {
+    const state = history.state;
+    if (state && state.instituicao) {
       this.instituicao = state.instituicao;
-   }
-
+    }
   }
 
   editarInstituicao(form: NgForm): void {
@@ -58,9 +56,10 @@ export class EditaInstituicaoComponent implements OnInit {
       next: (instituicaoAtualizada) => {
         this.mensagemSucesso = 'Instituição editada com sucesso!';
         this.isLoading = false;
-        this.instituicao = instituicaoAtualizada
+        this.instituicao = instituicaoAtualizada;
+        this.showSuccess();
 
-    this.router.navigate(['/admin/instituicao']);
+        this.router.navigate(['/admin/instituicao']);
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';
@@ -68,5 +67,13 @@ export class EditaInstituicaoComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  showSuccess() {
+    this.toastr.success('Instituição editada com sucesso!', 'Sucesso!');
+  }
+
+  showError() {
+    this.toastr.success('A edição falhou', 'Error!');
   }
 }

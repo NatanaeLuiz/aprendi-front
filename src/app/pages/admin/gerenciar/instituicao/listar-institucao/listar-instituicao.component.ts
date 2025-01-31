@@ -36,10 +36,29 @@ export class ListarInstituicaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listarTodasInsituicoes();
+    this.carregarInstituicoes();
   }
 
-  private listarTodasInsituicoes() {
+  // private listarTodasInsituicoes() {
+  //   this.isLoading = true;
+  //   this.instituicaoService.listarInstituicoes().subscribe({
+  //     next: (instituicoes) => {
+  //       this.instituicoes = instituicoes;
+  //       this.isLoading = false;
+  //     },
+  //     error: (error) => {
+  //       this.mensagemErro = 'Erro ao listar todas as instituições.';
+  //       console.error(error);
+  //       this.isLoading = false;
+  //     }
+  //   });
+  // }
+
+  editarInstituicao(instituicao: Instituicao){
+    this.router.navigate(['/admin/edita-instituicao'], {state: {instituicao}});
+  }
+
+  carregarInstituicoes(): void {
     this.isLoading = true;
     this.instituicaoService.listarInstituicoes().subscribe({
       next: (instituicoes) => {
@@ -47,17 +66,26 @@ export class ListarInstituicaoComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        this.mensagemErro = 'Erro ao listar todas as instituições.';
+        this.mensagemErro = 'Erro ao carregar instituições. Tente novamente.';
         console.error(error);
         this.isLoading = false;
       }
     });
   }
 
-  editarInstituicao(instituicao: Instituicao){
-
-   //this.instituicaoService.setInstituicao(instituicao);
-    this.router.navigate(['/admin/edita-instituicao'], {state: {instituicao}});
+  excluirInstituicao(cpfOuCnpj: string): void {
+    if (confirm('Tem certeza que deseja excluir esta instituição?')) {
+      this.isLoading = true;
+      this.instituicaoService.deleteInstituicao(cpfOuCnpj).subscribe({
+        next: () => {
+          this.carregarInstituicoes();
+        },
+        error: (error) => {
+          console.error(error);
+          this.isLoading = false;
+        }
+      });
+    }
   }
 
   redirecionarCadastroInstituicao(){

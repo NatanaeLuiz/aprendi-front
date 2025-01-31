@@ -52,7 +52,7 @@
                 <a class="btn btn-info btn-sm me-2" (click)="editarInstituicao(instituicao)">
                   <i class="fas fa-pencil-alt"></i> Editar
                 </a>
-                <a class="btn btn-danger btn-sm" href="#">
+                <a class="btn btn-danger btn-sm" (click)="excluirInstituicao(instituicao.cpfOuCnpj)">
                   <i class="fas fa-trash"></i> Deletar
                 </a>
               </td>
