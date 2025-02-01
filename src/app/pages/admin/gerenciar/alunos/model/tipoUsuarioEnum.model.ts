@@ -1,0 +1,7 @@
+export enum TipoUsuarioEnum {
+  ADMINISTRADOR = 'ADMINISTRADOR',
+  PROFESSOR = 'PROFESSOR',
+  ALUNO = 'ALUNO',
+  DIRETOR = 'DIRETOR',
+  SUPORTE = 'SUPORTE'
+}
