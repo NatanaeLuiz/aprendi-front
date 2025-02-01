@@ -23,6 +23,9 @@ import { ListarAdministradorComponent } from './pages/admin/gerenciar/administra
 import { CadastroAdministrador } from './pages/admin/gerenciar/administradores/cadastro-administrador/cadastro-administrador.component';
 import { CadastroInstituicaoComponent } from './pages/admin/gerenciar/instituicao/cadastro-instituicao/cadastro-instituicao.component';
 import { EditaInstituicaoComponent } from './pages/admin/gerenciar/instituicao/edita-instituicao/edita-instituicao.component';
+import { ModulosComponent } from './pages/aluno/modulos/modulos.component';
+import { ParticipantesComponent } from './pages/aluno/modulos/participantes/participantes.component';
+import { NotasComponent } from './pages/aluno/modulos/notas/notas.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +45,24 @@ export const routes: Routes = [
         path: 'meus-cursos',
         component: MeusCursosComponent,
         title: 'meus-cursos'
+      },
+      {
+        path: 'modulos',
+        component: ModulosComponent,
+        title: 'modulos',
+        children: [
+          
+        ]
+      },
+      {
+        path: 'modulos/participantes',
+        component: ParticipantesComponent,
+        title: 'participantes'
+      },
+      {
+        path: 'modulos/notas',
+        component: NotasComponent,
+        title: 'notas'
       },
       {
         path: 'painel',
