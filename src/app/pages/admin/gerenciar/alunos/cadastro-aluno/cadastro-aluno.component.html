@@ -33,6 +33,12 @@
                   <input type="text" class="form-control" [(ngModel)]="aluno.sobrenome" name="sobrenomeAluno" />
                 </div>
 
+                <!-- cnpjOuCpf -->
+                <div class="form-group mb-3">
+                  <label for="cpfOuCnpj">CPF</label>
+                  <input type="text" class="form-control" [(ngModel)]="aluno.cpfOuCnpj" name="cpfOuCnpj" />
+                </div>
+
                 <!-- Email -->
                 <div class="form-group mb-3">
                   <label for="emailAluno">Email</label>
@@ -45,6 +51,15 @@
                   <label for="senhaAluno">Senha</label>
                   <input type="password" class="form-control" [(ngModel)]="aluno.senha" name="senhaAluno" required #senha="ngModel" />
                   <div *ngIf="senha.invalid && senha.touched" class="text-danger">A senha é obrigatória</div>
+                </div>
+
+                <!-- Status -->
+                <div class="form-group mb-3">
+                  <label for="statusAluno">Status</label>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="aluno.statusUsuario" name="statusAluno" />
+                    <label class="form-check-label" for="statusAluno">Ativo</label>
+                  </div>
                 </div>
 
                 <!-- Telefone -->

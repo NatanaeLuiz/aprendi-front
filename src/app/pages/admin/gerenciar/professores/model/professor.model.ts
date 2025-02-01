@@ -1,8 +1,6 @@
-import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { Telefone } from './telefone.model';
-import { TipoUsuarioEnum } from './tipoUsuarioEnum.model';
+import { TipoUsuarioEnum } from "../../alunos/model/tipoUsuarioEnum.model";
 
-export interface Aluno {
+export interface Professor {
   nome: string,
   sobrenome: string,
   email: string;

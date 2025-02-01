@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../../../../../environments/environment';
 import { Aluno } from '../model/aluno.model';
+import { Pagina } from '../../../../utils/pagina.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,29 @@ export class AlunoService {
           })
         );
     }
+
+  listarAlunos(pagina: number, tamanhoPagina: number): Observable<Pagina<Aluno>> {
+    const params = new HttpParams()
+      .set('page', pagina.toString())
+      .set('size', tamanhoPagina.toString());
+
+    return this.http.get<Pagina<Aluno>>(`${this.apiUrl}/usuarios/tipo/ALUNO`, { params })
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao listar alunos:', error);
+          return throwError(() => new Error('Erro ao buscar alunos. Tente novamente.'));
+        })
+      );
+  }
+
+  deleteAluno(cpfOuCnpj: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/usuarios/${cpfOuCnpj}`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao deletar instituição:', error);
+          return throwError(() => new Error('Erro ao deletar instituição. Tente novamente.'));
+        })
+      );
+  }
+
 }

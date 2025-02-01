@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../../../../services/backend.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +39,9 @@ export class CadastroAluno implements OnInit {
     sobrenome: '',
     tipoUsuario: TipoUsuarioEnum.ALUNO,
     instituicao: '',
-    telefones : []
+    telefones : [],
+    statusUsuario: false,
+    cpfOuCnpj: ''
   };
 
   isLoading = false;
@@ -68,17 +69,6 @@ export class CadastroAluno implements OnInit {
     });
   }
 
-  carregarCursosDisponiveis(): void {
-    this.cursoService.listarCursos().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.cursos = response;
-      },
-      error: (err) => {
-        console.error('Erro ao carregar cursos', err);
-      }
-    });
-  }
 
   salvarAluno(form: NgForm): void {
     if (form.invalid) {

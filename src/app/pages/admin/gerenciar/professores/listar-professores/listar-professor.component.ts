@@ -1,36 +1,72 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { BackendService } from '../../../../../services/backend.service';
+import { ProfessorService } from '../service/professor.service';
+import { Professor } from '../model/professor.model';
+import { Pagina } from '../../../../utils/pagina.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alunos',
-  imports: [],
   templateUrl: './listar-professor.component.html',
-  styleUrl: './listar-professor.component.css'
+  styleUrl: './listar-professor.component.css',
+  standalone: true,
+  imports:[CommonModule]
 })
 export class ListarProfessorComponent implements OnInit {
 
   router = inject(Router)
+    professores: Professor[] = [];
+    isLoading = false;
+    mensagemSucesso: string | null = null;
+    mensagemErro: string | null = null;
+    paginaAtual: number = 0;
+    tamanhoPagina: number = 10;
+    totalPaginas: number = 0;
 
-  constructor(private backEnd: BackendService, private dialog: MatDialog){
+
+  constructor(private professorService: ProfessorService, private dialog: MatDialog){
 
   }
 
   ngOnInit(): void {
-      this.backEnd.getCurso().subscribe({
-        next: (Response) => {
-          console.log(Response);
-        }
-      })
+    this.carregarProfessores()
   }
-  redirecionarCadastroProfessor(){
-    this.router.navigate(['/admin/cadastro-professor']);
-    // this.dialog.open(CadastroAluno, {
-    //   width: '50%', // Define a largura do diálogo
-    //   height: 'auto', // Define a altura automática (opcional)
-    //   disableClose: true, // Para impedir o fechamento ao clicar fora do diálogo
-    // });
 
-  }
+    carregarProfessores(): void {
+      this.professorService.listarProfessor(this.paginaAtual, this.tamanhoPagina).subscribe({
+        next: (response: Pagina<Professor>) => {
+          console.log(response.content)
+          this.professores = response.content;
+          this.totalPaginas = response.totalPages;
+        },
+        error: (error) => {
+          console.error('Erro ao buscar professores:', error);
+        }
+      });
+    }
+
+    mudarPagina(pagina: number): void {
+      this.paginaAtual = pagina;
+      this.carregarProfessores();
+    }
+
+    excluirProfessor(cpfOuCnpj: string): void {
+      if (confirm('Tem certeza que deseja excluir este professor?')) {
+        this.isLoading = true;
+        this.professorService.deleteProfessor(cpfOuCnpj).subscribe({
+          next: () => {
+            this.carregarProfessores();
+          },
+          error: (error) => {
+            console.error(error);
+            this.isLoading = false;
+          }
+        });
+      }
+    }
+
+    redirecionarCadastroProfessor(){
+      this.router.navigate(['/admin/cadastro-professor']);
+    }
 }
