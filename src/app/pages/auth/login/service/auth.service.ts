@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
     private user: any;
-  
+
     login(username: string, password: string) {
       if (username === 'admin' && password === '1234') {
         this.user = { username, role: 'admin' };
@@ -16,17 +16,25 @@ export class AuthService {
         this.user = { username, role: 'aluno' };
         localStorage.setItem('userRole', 'aluno'); // Persistir a role no localStorage
         return of(this.user);
+      } else if (username === 'professor' && password === '1234') {
+        this.user = { username, role: 'professor' };
+        localStorage.setItem('userRole', 'professor'); // Persistir a role no localStorage
+        return of(this.user);
       } else {
         throw new Error('Usuário ou senha inválidos');
       }
     }
-  
+
     isAdmin() {
       return this.user?.role === 'admin';
     }
-  
+
     isAluno() {
       return this.user?.role === 'aluno';
+    }
+
+    isProfessor() {
+      return this.user?.role === 'professor';
     }
 
     getUserRole(): string | null {

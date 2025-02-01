@@ -25,6 +25,8 @@ export class LoginComponent {
         this.router.navigate(['/admin/dashboard']);
       } else if (user.role === 'aluno') {
         this.router.navigate(['/aluno/meus-cursos']);
+      }else if (user.role === 'professor') {
+        this.router.navigate(['/professor/meus-cursos-professor']);
       }
     });
   }
