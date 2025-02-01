@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../../../../services/backend.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ProfessorService } from '../service/professor.service';
+import { Instituicao } from '../../instituicao/model/instituicao.model';
+import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
+import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 
 @Component({
   selector: 'app-cadastro-curso',
@@ -25,30 +28,67 @@ import { RouterLink } from '@angular/router';
 })
 export class CadastroProfessor implements OnInit {
 
-  constructor(private backEnd: BackendService){
+  instituicoes: Instituicao[] = [];
+  isLoading = false;
+  mensagemSucesso: string | null = null;
+  mensagemErro: string | null = null;
+
+  professor = {
+    email: '',
+    senha: '',
+    nome: '',
+    sobrenome: '',
+    tipoUsuario: TipoUsuarioEnum.PROFESSOR,
+    instituicao: '',
+    telefones : [],
+    statusUsuario: false,
+    cpfOuCnpj: ''
+  };
+
+  constructor(private professorService: ProfessorService, private instituicaoService: InstituicaoService){
 
   }
-
-  cursoAtivo: boolean | null = null; // Valor inicial pode ser null, true ou false
-
-  instituicoes = [
-    { id: 1, nome: 'Instituição A' },
-    { id: 2, nome: 'Instituição B' },
-  ];
-
-  cursosDisponiveis = [
-    { id: 1, nome: 'Curso A' },
-    { id: 2, nome: 'Curso B' },
-    { id: 3, nome: 'Curso C' },
-  ];
 
   ngOnInit(): void {
-      // this.backEnd.getCurso().subscribe({
-      //   next: (Response) => {
-      //     console.log(Response);
-      //   }
-      // })
+    this.carregarInstituicoes()
   }
 
+  carregarInstituicoes(): void {
+    this.instituicaoService.listarInstituicoes().subscribe({
+      next: (instituicoes) => {
+        this.instituicoes = instituicoes;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar as instituições:', error);
+      }
+    });
+  }
+
+
+  salvarProfessor(form: NgForm): void {
+    if (form.invalid) {
+      this.mensagemErro = 'Preencha todos os campos obrigatórios!';
+      return;
+    }
+
+    this.isLoading = true;
+    this.mensagemErro = null;
+    this.mensagemSucesso = null;
+
+    console.log('dados a serem enviados', this.professor)
+    this.professorService.cadastrarProfessor(this.professor).subscribe({
+      next: () => {
+        console.log(this.professor);
+        this.mensagemSucesso = 'Professor cadastrado com sucesso!';
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.log(this.professor);
+        this.mensagemErro = 'Erro ao cadastrar professor. Tente novamente.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
+  }
 }
 

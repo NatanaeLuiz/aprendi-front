@@ -23,10 +23,13 @@ import { ListarAdministradorComponent } from './pages/admin/gerenciar/administra
 import { CadastroAdministrador } from './pages/admin/gerenciar/administradores/cadastro-administrador/cadastro-administrador.component';
 import { CadastroInstituicaoComponent } from './pages/admin/gerenciar/instituicao/cadastro-instituicao/cadastro-instituicao.component';
 import { EditaInstituicaoComponent } from './pages/admin/gerenciar/instituicao/edita-instituicao/edita-instituicao.component';
+import { ModulosComponent } from './pages/aluno/modulos/modulos.component';
+import { ParticipantesComponent } from './pages/aluno/modulos/participantes/participantes.component';
+import { NotasComponent } from './pages/aluno/modulos/notas/notas.component';
+import { LayoutProfessorComponent } from './pages/professor/layout/layout-professor';
 import { MeusCursosProfessorComponent } from './pages/professor/meus-cursos/meus-cursos-professor.component';
 import { PainelProfessorComponent } from './pages/professor/painel/painel-professor.component';
 import { HomeProfessorComponent } from './pages/professor/home/home-professor.component';
-import { LayoutProfessorComponent } from './pages/professor/layout/layout-professor';
 
 export const routes: Routes = [
   {
@@ -37,6 +40,66 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'aluno',
+    component: LayoutAlunoComponent,
+    children:[
+      {
+        path: 'meus-cursos',
+        component: MeusCursosComponent,
+        title: 'meus-cursos'
+      },
+      {
+        path: 'modulos',
+        component: ModulosComponent,
+        title: 'modulos',
+        children: [
+          
+        ]
+      },
+      {
+        path: 'modulos/participantes',
+        component: ParticipantesComponent,
+        title: 'participantes'
+      },
+      {
+        path: 'modulos/notas',
+        component: NotasComponent,
+        title: 'notas'
+      },
+      {
+        path: 'painel',
+        component: PainelComponent,
+        title: 'Painel'
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'Home'
+      }
+    ]
+  },
+  {
+    path: 'professor',
+    component: LayoutProfessorComponent,
+    children:[
+      {
+        path: 'meus-cursos-professor',
+        component: MeusCursosProfessorComponent,
+        title: 'meus-cursos'
+      },
+      {
+        path: 'painel-professor',
+        component: PainelProfessorComponent,
+        title: 'Painel'
+      },
+      {
+        path: 'home-professor',
+        component: HomeProfessorComponent,
+        title: 'Home'
+      }
+    ]
   },
   {
     path: 'admin',
@@ -128,49 +191,8 @@ export const routes: Routes = [
         title: 'Cadastro Administrador'
       }
       ]
-  },
-  {
-    path: 'aluno',
-    component: LayoutAlunoComponent,
-    children:[
-      {
-        path: 'meus-cursos',
-        component: MeusCursosComponent,
-        title: 'meus-cursos'
-      },
-      {
-        path: 'painel',
-        component: PainelComponent,
-        title: 'Painel'
-      },
-      {
-        path: 'home',
-        component: HomeComponent,
-        title: 'Home'
-      }
-    ]
-  },
-  {
-    path: 'professor',
-    component: LayoutProfessorComponent,
-    children:[
-      {
-        path: 'meus-cursos-professor',
-        component: MeusCursosProfessorComponent,
-        title: 'meus-cursos'
-      },
-      {
-        path: 'painel-professor',
-        component: PainelProfessorComponent,
-        title: 'Painel'
-      },
-      {
-        path: 'home-professor',
-        component: HomeProfessorComponent,
-        title: 'Home'
-      }
-    ]
-  },
+  },  
+  
   { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
     //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {

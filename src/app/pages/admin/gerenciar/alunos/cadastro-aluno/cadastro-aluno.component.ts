@@ -1,52 +1,98 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../../../../services/backend.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { InstituicaoService } from '../../instituicao/service/instituicao.service';
+import { Instituicao } from '../../instituicao/model/instituicao.model';
+import { CursoService } from '../../cursos/service/curso.service';
+import { Curso } from '../../cursos/model/cursos.model';
+import { AlunoService } from '../service/aluno.service';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
 
 @Component({
-  selector: 'app-cadastro-curso',
+  selector: 'app-cadastro-aluno',
   imports: [
     MatDialogModule,
-    CommonModule ,
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule],
+    FormsModule
+  ],
+  standalone: true,
   templateUrl: './cadastro-aluno.component.html',
-  styleUrl: './cadastro-aluno.component.css'
+  styleUrls: ['./cadastro-aluno.component.css']
 })
 export class CadastroAluno implements OnInit {
 
-  constructor(private backEnd: BackendService){
+  instituicoes: Instituicao[] = [];
+  cursos: Curso[] = [];
+  aluno = {
+    email: '',
+    senha: '',
+    nome: '',
+    sobrenome: '',
+    tipoUsuario: TipoUsuarioEnum.ALUNO,
+    instituicao: '',
+    telefones : [],
+    statusUsuario: false,
+    cpfOuCnpj: ''
+  };
 
-  }
+  isLoading = false;
+  mensagemSucesso: string | null = null;
+  mensagemErro: string | null = null;
 
-  cursoAtivo: boolean | null = null; // Valor inicial pode ser null, true ou false
-
-  instituicoes = [
-    { id: 1, nome: 'Instituição A' },
-    { id: 2, nome: 'Instituição B' },
-  ];
-
-  cursosDisponiveis = [
-    { id: 1, nome: 'Curso A' },
-    { id: 2, nome: 'Curso B' },
-    { id: 3, nome: 'Curso C' },
-  ];
+  constructor(
+    private instituicaoService: InstituicaoService,
+    private cursoService: CursoService,
+    private alunoService: AlunoService) {}
 
   ngOnInit(): void {
-      // this.backEnd.getCurso().subscribe({
-      //   next: (Response) => {
-      //     console.log(Response);
-      //   }
-      // })
+    console.log(this.carregarInstituicoes())
+    this.carregarInstituicoes();
   }
 
-}
+  carregarInstituicoes(): void {
+    this.instituicaoService.listarInstituicoes().subscribe({
+      next: (instituicoes) => {
+        this.instituicoes = instituicoes;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar as instituições:', error);
+      }
+    });
+  }
 
+
+  salvarAluno(form: NgForm): void {
+    if (form.invalid) {
+      this.mensagemErro = 'Preencha todos os campos obrigatórios!';
+      return;
+    }
+
+    this.isLoading = true;
+    this.mensagemErro = null;
+    this.mensagemSucesso = null;
+
+    console.log('dados a serem enviados', this.aluno)
+    this.alunoService.cadastrarAluno(this.aluno).subscribe({
+      next: () => {
+        console.log(this.aluno);
+        this.mensagemSucesso = 'Aluno cadastrado com sucesso!';
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.log(this.aluno);
+        this.mensagemErro = 'Erro ao cadastrar aluno. Tente novamente.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
+  }
+}

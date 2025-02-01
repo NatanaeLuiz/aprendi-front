@@ -1,0 +1,49 @@
+
+<app-nav-modulo></app-nav-modulo>
+<!--begin::App Main-->
+ <div class="app-content-header"> <!--begin::Container-->
+  <div class="container-fluid"> <!--begin::Row-->
+      <div class="row">
+          <div class="col-sm-6">
+            <h3 class="mb-0">TODO: Nome do Curso Puxar da Variavel</h3>
+          </div>
+
+      </div> <!--end::Row-->
+  </div> <!--end::Container-->
+</div> <!--end::App Content Header--> <!--begin::App Content-->
+<div class="app-content"> <!--begin::Container-->
+  <div class="container-fluid"> <!--begin::Row-->
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Participantes</h3>
+        </div>
+  
+        <div class="card-body p-0">
+          <!-- Exibir mensagem de carregamento -->
+          <div *ngIf="isLoading" class="loading">Carregando...</div>
+  
+          <!-- Exibir tabela apenas se houver instituições -->
+          <table *ngIf="participantesCurso.length" class="table table-striped projects">
+            <thead>
+              <tr>
+                <th style="width: 40%">Nome do Participante</th>
+                <th style="width: 30%">CPF/CNPJ</th>
+                <th style="width: 20%">Último acesso ao curso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let participante of participantesCurso">
+                <td><a href="#">teste</a></td>
+                <td>teste</td>
+                <td>teste</td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <!-- Exibir mensagem caso não haja instituições -->
+          <div *ngIf="!participantesCurso.length && !isLoading" class="alert alert-info text-center">
+            Nenhum participante cadastrado(a) para esse Curso.
+          </div>
+        </div>
+
+</div> <!--end::App Content-->

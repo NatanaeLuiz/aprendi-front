@@ -29,7 +29,7 @@ export class ListarInstituicaoComponent implements OnInit {
     quantidadeLicencasAluno: null
   };
 
-  constructor(private backEnd: BackendService,
+  constructor(
      private dialog: MatDialog,
     private instituicaoService: InstituicaoService){
 
@@ -38,21 +38,6 @@ export class ListarInstituicaoComponent implements OnInit {
   ngOnInit(): void {
     this.carregarInstituicoes();
   }
-
-  // private listarTodasInsituicoes() {
-  //   this.isLoading = true;
-  //   this.instituicaoService.listarInstituicoes().subscribe({
-  //     next: (instituicoes) => {
-  //       this.instituicoes = instituicoes;
-  //       this.isLoading = false;
-  //     },
-  //     error: (error) => {
-  //       this.mensagemErro = 'Erro ao listar todas as instituições.';
-  //       console.error(error);
-  //       this.isLoading = false;
-  //     }
-  //   });
-  // }
 
   editarInstituicao(instituicao: Instituicao){
     this.router.navigate(['/admin/edita-instituicao'], {state: {instituicao}});
