@@ -21,16 +21,13 @@
         <table class="table table-striped projects">
             <thead>
                 <tr>
-                    <th style="width: 30%">
-                       Descrição da Aula
+                    <th style="width: 50%">
+                       Título da Aula
                     </th>
                     <th style="width: 30%">
                         Duração
                     </th>
-                    <th>
-                        Modulos
-                    </th>
-                    <th style="width: 22%">
+                    <th style="width: 20%">
                       Ações
                     </th>
                 </tr>
@@ -50,102 +47,14 @@
 
                         </ul>
                     </td>
-                    <td class="project_progress">
-                        <small>
-                            5
-                        </small>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
 
-                    </td>
-                    <td>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                              <p> 80 minutos</p>
-                            </li>
-                        </ul>
-                    </td>
-                    <td class="project_progress">
-                      <small>
-                          4
-                      </small>
-                  </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-
-                    </td>
-                    <td>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                              <p> 120 minutosa</p>
-                            </li>
-
-                        </ul>
-                    </td>
-                    <td class="project_progress">
-                      <small>
-                          4
-                      </small>
-                  </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
+                      <button class="btn btn-info btn-sm" (click)="editarAula()" >
+                        <i class="fas fa-pencil-alt"></i> Editar
+                      </button>
+                      <button class="btn btn-danger btn-sm" >
+                        <i class="fas fa-trash"></i> Excluir
+                      </button>
                     </td>
                 </tr>
 

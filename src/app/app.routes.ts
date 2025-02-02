@@ -33,6 +33,9 @@ import { HomeProfessorComponent } from './pages/professor/home/home-professor.co
 import { EditarAluno } from './pages/admin/gerenciar/alunos/editar-aluno/editar-aluno.component';
 import { EditarProfessor } from './pages/admin/gerenciar/professores/editar-professor/editar-professor.component';
 import { EditarAdministrador } from './pages/admin/gerenciar/administradores/editar-administrador/editar-administrador.component';
+import { EditarCurso } from './pages/admin/gerenciar/cursos/editar-curso/editar-curso.component';
+import { EditarModulo } from './pages/admin/gerenciar/modulos/editar-modulo/editar-modulo.component';
+import { EditarAula } from './pages/admin/gerenciar/aulas/editar-aula/editar-aula.component';
 
 export const routes: Routes = [
   {
@@ -154,14 +157,29 @@ export const routes: Routes = [
         title: 'Cadastro Curso'
       },
       {
+        path: 'editar-curso',
+        component: EditarCurso,
+        title: 'Editar curso'
+      },
+      {
         path: 'cadastro-modulo',
         component: CadastroModulo,
         title: 'Cadastro Modulo'
       },
       {
+        path: 'editar-modulo',
+        component: EditarModulo,
+        title: 'Editar Modulo'
+      },
+      {
         path: 'cadastro-aula',
         component: CadastroAula,
         title: 'Cadastro Aula'
+      },
+      {
+        path: 'editar-aula',
+        component: EditarAula,
+        title: 'Editar Aula'
       },
       {
         path: 'alunos',

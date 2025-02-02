@@ -24,13 +24,13 @@ export class ListarAulasComponent implements OnInit {
         }
       })
   }
+
+  editarAula(){
+    this.router.navigate(['/admin/editar-aula']);
+  }
+
   redirecionarCadastroAula(){
     this.router.navigate(['/admin/cadastro-aula']);
-  //   this.dialog.open(CadastroCurso, {
-  //     width: '50%', // Define a largura do diálogo
-  //     height: 'auto', // Define a altura automática (opcional)
-  //     disableClose: true, // Para impedir o fechamento ao clicar fora do diálogo
-  //   });
 
    }
 }
