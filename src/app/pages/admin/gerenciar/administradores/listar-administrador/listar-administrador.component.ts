@@ -24,6 +24,11 @@ export class ListarAdministradorComponent implements OnInit {
         }
       })
   }
+
+  editarAdministrador(){
+        this.router.navigate(['/admin/editar-administrador']);
+      }
+
   redirecionarCadastroAdministrador(){
     this.router.navigate(['/admin/cadastro-administrador']);
     // this.dialog.open(CadastroAluno, {

@@ -9,13 +9,11 @@ import { InstituicaoService } from '../../instituicao/service/instituicao.servic
 import { Instituicao } from '../../instituicao/model/instituicao.model';
 import { CursoService } from '../../cursos/service/curso.service';
 import { Curso } from '../../cursos/model/cursos.model';
-import { AlunoService } from '../service/aluno.service';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
-import { Aluno } from '../model/aluno.model';
+import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
 
 @Component({
-  selector: 'app-cadastro-aluno',
+  selector: 'app-cadastro-professor',
   imports: [
     MatDialogModule,
     CommonModule,
@@ -26,26 +24,24 @@ import { Aluno } from '../model/aluno.model';
     FormsModule
   ],
   standalone: true,
-  templateUrl: './editar-aluno.component.html',
-  styleUrls: ['./editar-aluno.component.css']
+  templateUrl: './editar-administrador.component.html',
+  styleUrls: ['./editar-administrador.component.css']
 })
-export class EditarAluno implements OnInit {
+export class EditarAdministrador implements OnInit {
 
-  cursos: Curso[] = [];
   instituicoes: Instituicao[] = [];
-
-  aluno = {
+  cursos: Curso[] = [];
+  administrador = {
     email: '',
     senha: '',
     nome: '',
     sobrenome: '',
-    tipoUsuario: TipoUsuarioEnum.ALUNO,
+    tipoUsuario: TipoUsuarioEnum.ADMINISTRADOR,
     instituicao: '',
     telefones : [],
     statusUsuario: false,
     cpfOuCnpj: ''
   };
-
 
   isLoading = false;
   mensagemSucesso: string | null = null;
@@ -53,19 +49,17 @@ export class EditarAluno implements OnInit {
 
   constructor(
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService,
-    private alunoService: AlunoService) {}
+    private cursoService: CursoService) {}
 
-  ngOnInit(): void {
-    const state = history.state;
-    if (state && state.aluno) {
-      this.aluno = state.aluno;
+    ngOnInit(): void {
+      const state = history.state;
+      if (state && state.administrador) {
+        this.administrador = state.administrador;
+      }
+
+      console.log(this.carregarInstituicoes())
+      this.carregarInstituicoes();
     }
-
-   // console.log(this.carregarInstituicoes())
-    this.carregarInstituicoes();
-  }
-
 
   carregarInstituicoes(): void {
     this.instituicaoService.listarInstituicoes().subscribe({
@@ -78,7 +72,7 @@ export class EditarAluno implements OnInit {
     });
   }
 
-  editarAluno(form: NgForm): void {
+  editarAdministrador(form: NgForm): void {
     if (form.invalid) {
       this.mensagemErro = 'Preencha todos os campos obrigatórios!';
       return;
