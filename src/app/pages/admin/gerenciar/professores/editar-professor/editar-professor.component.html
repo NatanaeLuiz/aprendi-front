@@ -11,67 +11,66 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Editar Aluno</h3>
+              <h3 class="card-title">Editar Professor</h3>
             </div>
 
-            <form #form="ngForm" (ngSubmit)="editarAluno(form)">
+            <form #form="ngForm" (ngSubmit)="editarProfessor(form)">
               <div class="card-body">
                 <!-- Mensagens -->
                 <div *ngIf="mensagemSucesso" class="alert alert-success">{{ mensagemSucesso }}</div>
                 <div *ngIf="mensagemErro" class="alert alert-danger">{{ mensagemErro }}</div>
 
-                <!-- Nome do Aluno -->
+                <!-- Nome do professor -->
                 <div class="form-group mb-3">
-                  <label for="nomeAluno">Nome do Aluno</label>
-                  <input type="text" class="form-control" [(ngModel)]="aluno.nome" name="nomeAluno" required #nome="ngModel" />
+                  <label for="nomeProfessor">Nome do Professor</label>
+                  <input type="text" class="form-control" [(ngModel)]="professor.nome" name="nomeProfessor" required #nome="ngModel" />
                   <div *ngIf="nome.invalid && nome.touched" class="text-danger">O nome é obrigatório</div>
                 </div>
 
                 <!-- Sobrenome -->
                 <div class="form-group mb-3">
-                  <label for="sobrenomeAluno">Sobrenome</label>
-                  <input type="text" class="form-control" [(ngModel)]="aluno.sobrenome" name="sobrenomeAluno" />
+                  <label for="sobrenomeProfessor">Sobrenome</label>
+                  <input type="text" class="form-control" [(ngModel)]="professor.sobrenome" name="sobrenomeProfessor" />
                 </div>
 
                 <!-- cnpjOuCpf -->
                 <div class="form-group mb-3">
                   <label for="cpfOuCnpj">CPF</label>
-                  <input type="text" class="form-control" [(ngModel)]="aluno.cpfOuCnpj" name="cpfOuCnpj" />
+                  <input type="text" class="form-control" [(ngModel)]="professor.cpfOuCnpj" name="cpfOuCnpj" />
                 </div>
 
                 <!-- Email -->
                 <div class="form-group mb-3">
-                  <label for="emailAluno">Email</label>
-                  <input type="email" class="form-control" [(ngModel)]="aluno.email" name="emailAluno" required #email="ngModel" />
+                  <label for="emailProfessor">Email</label>
+                  <input type="email" class="form-control" [(ngModel)]="professor.email" name="emailProfessor" required #email="ngModel" />
                   <div *ngIf="email.invalid && email.touched" class="text-danger">O email é obrigatório</div>
                 </div>
 
                <!-- Senha -->
                 <div class="form-group mb-3">
-                  <label for="senhaAluno">Senha</label>
-                  <input type="password" class="form-control" [(ngModel)]="aluno.senha" name="senhaAluno" required #senha="ngModel" disabled />
+                  <label for="senhaProfessor">Senha</label>
+                  <input type="password" class="form-control" [(ngModel)]="professor.senha" name="senhaProfessor" required #senha="ngModel" disabled />
                 </div>
 
                 <!-- Status -->
                 <div class="form-group mb-3">
-                  <label for="statusAluno">Status</label>
+                  <label for="statusProfessor">Status</label>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" [(ngModel)]="aluno.statusUsuario" name="statusAluno" />
-                    <label class="form-check-label" for="statusAluno">Ativo</label>
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="professor.statusUsuario" name="statusProfessor" />
+                    <label class="form-check-label" for="statusProfessor">Ativo</label>
                   </div>
                 </div>
 
                 <!-- Telefone -->
                 <!-- <div class="form-group mb-3">
-                  <label for="telefoneAluno">Telefone</label>
-                  <input type="text" class="form-control" [(ngModel)]="aluno.telefones" name="telefoneAluno" />
+                  <label for="telefoneProfessor">Telefone</label>
+                  <input type="text" class="form-control" [(ngModel)]="professor.telefones" name="telefoneProfessor" />
                 </div> -->
-
 
                 <!-- Instituição -->
                 <div class="form-group mb-3">
                   <label for="instituicao">Instituição</label>
-                  <select class="form-control" [(ngModel)]="aluno.instituicao" name="instituicao" required #instituicao="ngModel">
+                  <select class="form-control" [(ngModel)]="professor.instituicao" name="instituicao" required #instituicao="ngModel">
                     <option value="" disabled selected>Selecione uma instituição</option>
                     <option *ngFor="let inst of instituicoes" [ngValue]="inst.cpfOuCnpj">{{ inst.nomeInstituicao }}</option>
                   </select>
@@ -82,7 +81,7 @@
 
               <!-- Botões -->
               <div class="card-footer">
-                <!-- <button type="button" class="btn btn-danger" [routerLink]="['/admin/aluno']">Cancelar</button> -->
+                <!-- <button type="button" class="btn btn-danger" [routerLink]="['/admin/professor']">Cancelar</button> -->
                 <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
                   Salvar
                 </button>

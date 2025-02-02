@@ -66,6 +66,10 @@ export class ListarProfessorComponent implements OnInit {
       }
     }
 
+    editarProfessor(professor: Professor){
+      this.router.navigate(['/admin/editar-professor'], {state: {professor}});
+    }
+
     redirecionarCadastroProfessor(){
       this.router.navigate(['/admin/cadastro-professor']);
     }

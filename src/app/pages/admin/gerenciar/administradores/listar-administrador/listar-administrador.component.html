@@ -58,60 +58,15 @@
                         <span class="badge badge-success">Ativo</span>
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
+                      <button class="btn btn-info btn-sm" (click)="editarAdministrador()" >
+                        <i class="fas fa-pencil-alt"></i> Editar
+                      </button>
+                      <button class="btn btn-danger btn-sm" >
+                        <i class="fas fa-trash"></i> Excluir
+                      </button>
                     </td>
                 </tr>
-                <tr>
 
-                    <td>
-                        <a>
-                            Vitor
-                        </a>
-
-                    </td>
-                    <td>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                              <p> {{ 'vitor@gmail.com' }} </p>
-                            </li>
-                        </ul>
-                    </td>
-
-                    <td class="project-state">
-                      <span class="badge badge-custom-danger">Inativo</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
             </tbody>
         </table>
       </div>

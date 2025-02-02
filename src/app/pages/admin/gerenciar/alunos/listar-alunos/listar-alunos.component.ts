@@ -59,8 +59,9 @@ export class ListarAlunosComponent implements OnInit {
     }
   }
 
-  editarAluno(){
-    this.router.navigate(['/admin/editar-aluno']);
+  editarAluno(aluno: Aluno){
+    this.router.navigate(['/admin/editar-aluno'], {state: {aluno}});
+    console.log(aluno);
   }
 
   redirecionarCadastroAluno(): void {
