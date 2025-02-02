@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunoService } from '../service/aluno.service';
 import { Pagina } from '../../../../utils/pagina.model';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listar-alunos.component.html',
   styleUrl: './listar-alunos.component.css',
   standalone: true,
-  imports:[CommonModule]
+  imports:[CommonModule, RouterLink]
 })
 export class ListarAlunosComponent implements OnInit {
 
@@ -57,6 +57,10 @@ export class ListarAlunosComponent implements OnInit {
         }
       });
     }
+  }
+
+  editarAluno(){
+    this.router.navigate(['/admin/editar-aluno']);
   }
 
   redirecionarCadastroAluno(): void {

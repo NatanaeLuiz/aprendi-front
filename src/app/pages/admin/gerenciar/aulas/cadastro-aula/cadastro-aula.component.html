@@ -23,6 +23,7 @@
             <form>
               <div class="card-body">
                 <!-- Título da Aula -->
+
                 <div class="form-group mb-3">
                   <label for="tituloAula">Título</label>
                   <input type="text" class="form-control" id="tituloAula" placeholder="Digite o título da aula" required />
@@ -44,6 +45,18 @@
                 <div class="form-group mb-3">
                   <label for="ordemAula">Ordem</label>
                   <input type="number" class="form-control" id="ordemAula" placeholder="Digite a ordem da aula" />
+                </div>
+
+                <!-- Curso relacionado -->
+                <div class="form-group mb-3">
+                  <label for="curso">Curso Relacionado</label>
+                  <select class="form-control" id="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <!-- Exemplo de opções que podem ser populadas dinamicamente -->
+                    <option value="1">Curso de Programação</option>
+                    <option value="2">Curso de Design</option>
+                    <option value="3">Curso de Matemática</option>
+                  </select>
                 </div>
 
                 <!-- Módulo relacionado -->

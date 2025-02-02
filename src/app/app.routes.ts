@@ -30,6 +30,7 @@ import { LayoutProfessorComponent } from './pages/professor/layout/layout-profes
 import { MeusCursosProfessorComponent } from './pages/professor/meus-cursos/meus-cursos-professor.component';
 import { PainelProfessorComponent } from './pages/professor/painel/painel-professor.component';
 import { HomeProfessorComponent } from './pages/professor/home/home-professor.component';
+import { EditarAluno } from './pages/admin/gerenciar/alunos/editar-aluno/editar-aluno.component';
 
 export const routes: Routes = [
   {
@@ -55,7 +56,7 @@ export const routes: Routes = [
         component: ModulosComponent,
         title: 'modulos',
         children: [
-          
+
         ]
       },
       {
@@ -171,6 +172,11 @@ export const routes: Routes = [
         title: 'Cadastro Aluno'
       },
       {
+        path: 'editar-aluno',
+        component: EditarAluno,
+        title: 'Editar Aluno'
+      },
+      {
         path: 'professor',
         component: ListarProfessorComponent,
         title: 'professor'
@@ -191,8 +197,8 @@ export const routes: Routes = [
         title: 'Cadastro Administrador'
       }
       ]
-  },  
-  
+  },
+
   { path: 'cadastro', component: UserFormComponent, data: { acao: 'Cadastrar' } },
     //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {
