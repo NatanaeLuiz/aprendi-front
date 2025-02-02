@@ -24,13 +24,12 @@ export class ListarModulosComponent implements OnInit {
         }
       })
   }
+
+  editarModulo(){
+    this.router.navigate(['/admin/editar-modulo']);
+  }
+
   redirecionarCadastroCurso(){
     this.router.navigate(['/admin/cadastro-modulo']);
-  //   this.dialog.open(CadastroCurso, {
-  //     width: '50%', // Define a largura do diálogo
-  //     height: 'auto', // Define a altura automática (opcional)
-  //     disableClose: true, // Para impedir o fechamento ao clicar fora do diálogo
-  //   });
-
    }
 }
