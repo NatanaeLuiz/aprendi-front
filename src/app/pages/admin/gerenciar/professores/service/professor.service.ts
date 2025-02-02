@@ -13,15 +13,16 @@ export class ProfessorService {
 
   constructor(private http: HttpClient) {}
 
-    cadastrarProfessor(professor: Professor): Observable<Professor> {
-      return this.http.post<Professor>(`${this.apiUrl}/usuarios/salvar`, professor)
-        .pipe(
-          catchError(error => {
-            console.error('Erro ao cadastrar professor:', error);
-            return throwError(() => new Error('Erro ao cadastrar professor. Tente novamente.'));
-          })
-        );
-    }
+  cadastrarProfessor(professor: Professor): Observable<Professor> {
+    return this.http.post<Professor>(`${this.apiUrl}/usuarios/salvar`, professor)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error?.message || 'Erro ao cadastrar professor. Tente novamente.';
+          console.error('Erro ao cadastrar professor:', error);
+          return throwError(() => new Error(errorMessage));
+        })
+      );
+  }
 
   listarProfessor(pagina: number, tamanhoPagina: number): Observable<Pagina<Professor>> {
     const params = new HttpParams()
@@ -46,5 +47,4 @@ export class ProfessorService {
         })
       );
   }
-
 }

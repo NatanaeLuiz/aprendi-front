@@ -89,7 +89,7 @@ export class CadastroAluno implements OnInit {
       },
       error: (error) => {
         console.log(this.aluno);
-        this.mensagemErro = 'Erro ao cadastrar aluno. Tente novamente.';
+        this.mensagemErro = error.message || 'Erro ao cadastrar professor. Tente novamente.';
         console.error(error);
         this.isLoading = false;
       }

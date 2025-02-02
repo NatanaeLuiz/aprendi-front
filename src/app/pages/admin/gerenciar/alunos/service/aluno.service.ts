@@ -17,8 +17,9 @@ export class AlunoService {
       return this.http.post<Aluno>(`${this.apiUrl}/usuarios/salvar`, aluno)
         .pipe(
           catchError(error => {
-            console.error('Erro ao cadastrar instituição:', error);
-            return throwError(() => new Error('Erro ao cadastrar instituição. Tente novamente.'));
+            const errorMessage = error.error?.message || 'Erro ao cadastrar professor. Tente novamente.';
+            console.error('Erro ao cadastrar professor:', error);
+            return throwError(() => new Error(errorMessage));
           })
         );
     }

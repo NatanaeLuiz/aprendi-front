@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunoService } from '../service/aluno.service';
 import { Pagina } from '../../../../utils/pagina.model';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listar-alunos.component.html',
   styleUrl: './listar-alunos.component.css',
   standalone: true,
-  imports:[CommonModule, RouterLink]
+  imports:[CommonModule]
 })
 export class ListarAlunosComponent implements OnInit {
 

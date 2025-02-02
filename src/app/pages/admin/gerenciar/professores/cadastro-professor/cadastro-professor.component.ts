@@ -75,7 +75,7 @@ export class CadastroProfessor implements OnInit {
     this.mensagemErro = null;
     this.mensagemSucesso = null;
 
-    console.log('dados a serem enviados', this.professor)
+    console.log('dados a serem enviados', this.professor);
     this.professorService.cadastrarProfessor(this.professor).subscribe({
       next: () => {
         console.log(this.professor);
@@ -84,7 +84,8 @@ export class CadastroProfessor implements OnInit {
       },
       error: (error) => {
         console.log(this.professor);
-        this.mensagemErro = 'Erro ao cadastrar professor. Tente novamente.';
+        // A mensagem de erro é recebida e atribuída aqui
+        this.mensagemErro = error.message || 'Erro ao cadastrar professor. Tente novamente.';
         console.error(error);
         this.isLoading = false;
       }
