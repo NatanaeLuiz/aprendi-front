@@ -1,0 +1,24 @@
+.card-contact {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.card-contact:hover {
+    background-color: #f5f5f5; /* Altere para a cor desejada */
+    transform: scale(1.02);    /* Efeito de leve aumento */
+}
+
+.card:hover{
+    box-shadow: 20px 20px 80px -44px #000;
+    transition: .5s ease-in-out;
+}
+
+.card-body {
+    height: 10%; /* Garante um tamanho fixo */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse o espaço */
+}
+
+.card-img-top {
+    height: 120px; /* Define uma altura fixa */
+    width: 100%; /* Garante que a largura ocupe todo o card */
+    object-fit: cover; /* Mantém a proporção e preenche todo o espaço */
+}
