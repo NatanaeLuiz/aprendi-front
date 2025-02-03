@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,15 +7,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { CursoService } from '../../cursos/service/curso.service';
-import { Curso } from '../../cursos/model/cursos.model';
-import { AlunoService } from '../service/aluno.service';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
 import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
 import { Aluno } from '../model/aluno.model';
+import { AlunoService } from '../service/aluno.service';
 
 @Component({
-  selector: 'app-cadastro-aluno',
+  selector: 'app-editar-aluno',
+  standalone: true,
   imports: [
     MatDialogModule,
     CommonModule,
@@ -23,29 +23,27 @@ import { Aluno } from '../model/aluno.model';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
-  standalone: true,
   templateUrl: './editar-aluno.component.html',
   styleUrls: ['./editar-aluno.component.css']
 })
-export class EditarAluno implements OnInit {
+export class EditarAlunoComponent implements OnInit {
 
-  cursos: Curso[] = [];
+  router = inject(Router)
   instituicoes: Instituicao[] = [];
-
-  aluno = {
+  aluno: Aluno = {
     email: '',
     senha: '',
     nome: '',
     sobrenome: '',
     tipoUsuario: TipoUsuarioEnum.ALUNO,
     instituicao: '',
-    telefones : [],
+    // telefones: [],
     statusUsuario: false,
     cpfOuCnpj: ''
   };
-
 
   isLoading = false;
   mensagemSucesso: string | null = null;
@@ -53,24 +51,21 @@ export class EditarAluno implements OnInit {
 
   constructor(
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService,
-    private alunoService: AlunoService) {}
+    private alunoService: AlunoService
+  ) {}
 
   ngOnInit(): void {
     const state = history.state;
     if (state && state.aluno) {
       this.aluno = state.aluno;
     }
-
-   // console.log(this.carregarInstituicoes())
     this.carregarInstituicoes();
   }
-
 
   carregarInstituicoes(): void {
     this.instituicaoService.listarInstituicoes().subscribe({
       next: (instituicoes: Instituicao[]) => {
-        this.instituicoes = instituicoes; // Atribuir a lista correta
+        this.instituicoes = instituicoes;
       },
       error: (error) => {
         console.error('Erro ao carregar as instituições:', error);
@@ -88,7 +83,18 @@ export class EditarAluno implements OnInit {
     this.mensagemErro = null;
     this.mensagemSucesso = null;
 
-
+    this.alunoService.editarAluno(this.aluno.cpfOuCnpj, this.aluno).subscribe({
+      next: (alunoAtualizado) => {
+        this.mensagemSucesso = 'Aluno editado com sucesso!';
+        this.isLoading = false;
+        this.aluno = alunoAtualizado;
+        this.router.navigate(['/admin/aluno']);
+      },
+      error: (error) => {
+        this.mensagemErro = 'Erro ao editar aluno. Tente novamente.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
   }
-
 }

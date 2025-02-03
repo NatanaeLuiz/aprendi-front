@@ -82,10 +82,9 @@
 
               <!-- Botões -->
               <div class="card-footer">
-                <!-- <button type="button" class="btn btn-danger" [routerLink]="['/admin/aluno']">Cancelar</button> -->
-                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-                  Salvar
-                </button>
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/alunos']">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="isLoading || form.invalid">
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span> Editar </button>
               </div>
             </form>
           </div>

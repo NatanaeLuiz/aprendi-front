@@ -59,7 +59,7 @@ export class EditaInstituicaoComponent implements OnInit {
         this.instituicao = instituicaoAtualizada;
         this.showSuccess();
 
-        this.router.navigate(['/admin/instituicao']);
+        this.router.navigate(['/admin/aluno']);
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar instituição. Tente novamente.';

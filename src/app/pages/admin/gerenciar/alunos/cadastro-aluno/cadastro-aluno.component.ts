@@ -7,8 +7,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { CursoService } from '../../cursos/service/curso.service';
-import { Curso } from '../../cursos/model/cursos.model';
 import { AlunoService } from '../service/aluno.service';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
@@ -31,7 +29,6 @@ import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
 export class CadastroAluno implements OnInit {
 
   instituicoes: Instituicao[] = [];
-  cursos: Curso[] = [];
   aluno = {
     email: '',
     senha: '',
@@ -50,7 +47,6 @@ export class CadastroAluno implements OnInit {
 
   constructor(
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService,
     private alunoService: AlunoService) {}
 
   ngOnInit(): void {

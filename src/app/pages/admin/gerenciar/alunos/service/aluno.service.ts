@@ -48,4 +48,14 @@ export class AlunoService {
       );
   }
 
+  editarAluno(cpfOuCnpj: string, aluno: Aluno): Observable<Aluno> {
+    return this.http.put<Aluno>(`${this.apiUrl}/usuarios/atualizar/${cpfOuCnpj}`, aluno)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao atualizar aluno:', error);
+          return throwError(() => new Error('Erro ao atualizar aluno. Tente novamente.'));
+        })
+      );
+  }
+
 }
