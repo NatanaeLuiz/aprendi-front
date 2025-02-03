@@ -32,7 +32,7 @@
           <tbody>
             <tr *ngFor="let aluno of alunos; let i = index">
               <td>{{ (paginaAtual * tamanhoPagina) + i + 1 }}</td>
-              <td>{{ aluno.nome }}</td>
+              <td>{{ aluno.nome + " " + aluno.sobrenome }}</td>
               <td>{{ aluno.cpfOuCnpj }}</td>
               <td class="project-state text-center"> <!-- Alinhado ao centro -->
                 <span class="badge"

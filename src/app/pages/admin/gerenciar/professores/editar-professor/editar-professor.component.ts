@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,11 +7,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { CursoService } from '../../cursos/service/curso.service';
-import { Curso } from '../../cursos/model/cursos.model';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ProfessorService } from '../service/professor.service';
 import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
+import { Router, RouterLink } from '@angular/router';
+import { Professor } from '../model/professor.model';
 
 @Component({
   selector: 'app-cadastro-professor',
@@ -22,7 +22,8 @@ import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   standalone: true,
   templateUrl: './editar-professor.component.html',
@@ -30,16 +31,16 @@ import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
 })
 export class EditarProfessor implements OnInit {
 
+  router = inject(Router)
   instituicoes: Instituicao[] = [];
-  cursos: Curso[] = [];
-  professor = {
+  professor: Professor = {
     email: '',
     senha: '',
     nome: '',
     sobrenome: '',
     tipoUsuario: TipoUsuarioEnum.PROFESSOR,
     instituicao: '',
-    telefones : [],
+    // telefones: [],
     statusUsuario: false,
     cpfOuCnpj: ''
   };
@@ -50,7 +51,6 @@ export class EditarProfessor implements OnInit {
 
   constructor(
     private instituicaoService: InstituicaoService,
-    private cursoService: CursoService,
     private professorService: ProfessorService) {}
 
     ngOnInit(): void {
@@ -74,6 +74,7 @@ export class EditarProfessor implements OnInit {
     });
   }
 
+
   editarProfessor(form: NgForm): void {
     if (form.invalid) {
       this.mensagemErro = 'Preencha todos os campos obrigatórios!';
@@ -84,7 +85,19 @@ export class EditarProfessor implements OnInit {
     this.mensagemErro = null;
     this.mensagemSucesso = null;
 
-
+    this.professorService.editarProfessor(this.professor.cpfOuCnpj, this.professor).subscribe({
+      next: (professorAtualizado) => {
+        this.mensagemSucesso = 'Aluno editado com sucesso!';
+        this.isLoading = false;
+        this.professor = professorAtualizado;
+        this.router.navigate(['/admin/professor']);
+      },
+      error: (error) => {
+        this.mensagemErro = 'Erro ao editar aluno. Tente novamente.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
   }
 
 }

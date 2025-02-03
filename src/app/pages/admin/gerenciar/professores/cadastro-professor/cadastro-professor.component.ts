@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProfessorService } from '../service/professor.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
 import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
@@ -28,6 +28,7 @@ import { InstituicaoService } from '../../instituicao/service/instituicao.servic
 })
 export class CadastroProfessor implements OnInit {
 
+  router = inject(Router)
   instituicoes: Instituicao[] = [];
   isLoading = false;
   mensagemSucesso: string | null = null;
@@ -81,6 +82,7 @@ export class CadastroProfessor implements OnInit {
         console.log(this.professor);
         this.mensagemSucesso = 'Professor cadastrado com sucesso!';
         this.isLoading = false;
+        this.router.navigate(['/admin/professor']);
       },
       error: (error) => {
         console.log(this.professor);

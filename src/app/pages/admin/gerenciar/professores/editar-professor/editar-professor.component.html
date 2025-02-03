@@ -66,24 +66,13 @@
                   <label for="telefoneProfessor">Telefone</label>
                   <input type="text" class="form-control" [(ngModel)]="professor.telefones" name="telefoneProfessor" />
                 </div> -->
-
-                <!-- Instituição -->
-                <div class="form-group mb-3">
-                  <label for="instituicao">Instituição</label>
-                  <select class="form-control" [(ngModel)]="professor.instituicao" name="instituicao" required #instituicao="ngModel">
-                    <option value="" disabled selected>Selecione uma instituição</option>
-                    <option *ngFor="let inst of instituicoes" [ngValue]="inst.cpfOuCnpj">{{ inst.nomeInstituicao }}</option>
-                  </select>
-                  <div *ngIf="instituicao.invalid && instituicao.touched" class="text-danger">A instituição é obrigatória</div>
-                </div>
-
               </div>
 
               <!-- Botões -->
               <div class="card-footer">
-                <!-- <button type="button" class="btn btn-danger" [routerLink]="['/admin/professor']">Cancelar</button> -->
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/professor']">Cancelar</button>
                 <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-                  Salvar
+                  Editar
                 </button>
               </div>
             </form>

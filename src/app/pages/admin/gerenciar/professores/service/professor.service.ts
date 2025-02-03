@@ -47,4 +47,14 @@ export class ProfessorService {
         })
       );
   }
+
+  editarProfessor(cpfOuCnpj: string, professor: Professor): Observable<Professor> {
+    return this.http.put<Professor>(`${this.apiUrl}/usuarios/atualizar/${cpfOuCnpj}`, professor)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao atualizar professor:', error);
+          return throwError(() => new Error('Erro ao atualizar professor. Tente novamente.'));
+        })
+      );
+  }
 }
