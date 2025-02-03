@@ -88,7 +88,7 @@ export class EditarAlunoComponent implements OnInit {
         this.mensagemSucesso = 'Aluno editado com sucesso!';
         this.isLoading = false;
         this.aluno = alunoAtualizado;
-        this.router.navigate(['/admin/aluno']);
+        this.router.navigate(['/admin/alunos']);
       },
       error: (error) => {
         this.mensagemErro = 'Erro ao editar aluno. Tente novamente.';

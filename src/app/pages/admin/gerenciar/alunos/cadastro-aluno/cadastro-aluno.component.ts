@@ -10,6 +10,7 @@ import { Instituicao } from '../../instituicao/model/instituicao.model';
 import { AlunoService } from '../service/aluno.service';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-aluno',
@@ -20,7 +21,8 @@ import { TipoUsuarioEnum } from '../model/tipoUsuarioEnum.model';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   standalone: true,
   templateUrl: './cadastro-aluno.component.html',
