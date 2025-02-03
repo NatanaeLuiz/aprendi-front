@@ -66,18 +66,6 @@
                   <label for="telefoneAluno">Telefone</label>
                   <input type="text" class="form-control" [(ngModel)]="aluno.telefones" name="telefoneAluno" />
                 </div> -->
-
-
-                <!-- Instituição -->
-                <div class="form-group mb-3">
-                  <label for="instituicao">Instituição</label>
-                  <select class="form-control" [(ngModel)]="aluno.instituicao" name="instituicao" required #instituicao="ngModel">
-                    <option value="" disabled selected>Selecione uma instituição</option>
-                    <option *ngFor="let inst of instituicoes" [ngValue]="inst.cpfOuCnpj">{{ inst.nomeInstituicao }}</option>
-                  </select>
-                  <div *ngIf="instituicao.invalid && instituicao.touched" class="text-danger">A instituição é obrigatória</div>
-                </div>
-
               </div>
 
               <!-- Botões -->
