@@ -1,80 +1,64 @@
-<!--begin::App Main-->
-<div class="app-content-header"> <!--begin::Container-->
-  <div class="container-fluid"> <!--begin::Row-->
+<!-- Botão para cadastrar novo administrador -->
+<div class="app-content-header">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-        <button (click)="redirecionarCadastroAdministrador()" type="button" class="btn btn-primary btn-flat btn-pri"><i class="fa fa-plus" aria-hidden="true"></i> Novo Administrador</button>
+        <button (click)="redirecionarCadastroAdministrador()" type="button" class="btn btn-primary btn-flat btn-pri">
+          <i class="fa fa-plus" aria-hidden="true"></i> Novo Administrador
+        </button>
       </div>
+    </div>
+  </div>
+</div>
 
-    </div> <!--end::Row-->
-  </div> <!--end::Container-->
-</div> <!--end::App Content Header--> <!--begin::App Content-->
-<div class="app-content"> <!--begin::Container-->
-  <div class="container-fluid"> <!--begin::Row-->
-
+<!-- Tabela de administradores -->
+<div class="app-content">
+  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Administradores</h3>
-
       </div>
       <div class="card-body p-0">
         <table class="table table-striped projects">
-            <thead>
-                <tr>
-
-                    <th style="width: 30%">
-                        Nome do Administrador
-                    </th>
-                    <th style="width: 20%">
-                        E-mail
-                    </th>
-
-                    <th style="width: 8%" class="text-center">
-                        Status
-                    </th>
-                    <th style="width: 22%">
-                      Ações
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td>
-                        <a>
-                            Rinaldo
-                        </a>
-                    </td>
-                    <td>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <p> {{ 'rinaldo@gmail.com' }} </p>
-                            </li>
-
-                        </ul>
-                    </td>
-
-                    <td class="project-state">
-                        <span class="badge badge-success">Ativo</span>
-                    </td>
-                    <td class="project-actions text-right">
-                      <button class="btn btn-info btn-sm" (click)="editarAdministrador()" >
-                        <i class="fas fa-pencil-alt"></i> Editar
-                      </button>
-                      <button class="btn btn-danger btn-sm" >
-                        <i class="fas fa-trash"></i> Excluir
-                      </button>
-                    </td>
-                </tr>
-
-            </tbody>
+          <thead>
+            <tr>
+              <th>Nome do Administrador</th>
+              <th>E-mail</th>
+              <th class="text-center">Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let administrador of administradores; let i = index">
+              <td>{{ administrador.nome + " "+ administrador.sobrenome }}</td>
+              <td>{{ administrador.email }}</td>
+              <td class="project-state text-center">
+                <span class="badge" [ngClass]="{ 'badge-success': administrador.statusUsuario, 'badge-danger': !administrador.statusUsuario }">
+                  {{ administrador.statusUsuario ? 'Ativo' : 'Inativo' }}
+                </span>
+              </td>
+              <td class="project-actions text-right">
+                <button class="btn btn-info btn-sm" (click)="editarAdministrador(administrador)">
+                  <i class="fas fa-pencil-alt"></i> Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="excluirAdministrador(administrador.cpfOuCnpj)">
+                  <i class="fas fa-trash"></i> Excluir
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      <!-- /.card-body -->
     </div>
 
-
-  </div> <!--end::App Content-->
-
-
-
+    <!-- Paginação -->
+    <div class="pagination" style="display: flex; justify-content: center; margin-top: 20px;">
+      <button *ngFor="let page of [].constructor(totalPaginas); let i = index"
+              class="btn btn-light"
+              [class.active]="paginaAtual === i"
+              (click)="mudarPagina(i)">
+        {{ i + 1 }}
+      </button>
+    </div>
+  </div>
+</div>

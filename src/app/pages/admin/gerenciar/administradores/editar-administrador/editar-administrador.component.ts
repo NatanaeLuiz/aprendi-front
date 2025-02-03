@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,10 +7,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { CursoService } from '../../cursos/service/curso.service';
 import { Curso } from '../../cursos/model/cursos.model';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
+import { Router, RouterLink } from '@angular/router';
+import { AdministradorService } from '../service/administrador.service';
+import { Administrador } from '../service/model/administrador.model';
 
 @Component({
   selector: 'app-cadastro-professor',
@@ -21,7 +23,8 @@ import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   standalone: true,
   templateUrl: './editar-administrador.component.html',
@@ -29,16 +32,16 @@ import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
 })
 export class EditarAdministrador implements OnInit {
 
+  router = inject(Router)
   instituicoes: Instituicao[] = [];
-  cursos: Curso[] = [];
-  administrador = {
+  administrador: Administrador = {
     email: '',
     senha: '',
     nome: '',
     sobrenome: '',
     tipoUsuario: TipoUsuarioEnum.ADMINISTRADOR,
     instituicao: '',
-    telefones : [],
+    // telefones : [],
     statusUsuario: false,
     cpfOuCnpj: ''
   };
@@ -47,14 +50,12 @@ export class EditarAdministrador implements OnInit {
   mensagemSucesso: string | null = null;
   mensagemErro: string | null = null;
 
-  constructor(
-    private instituicaoService: InstituicaoService,
-    private cursoService: CursoService) {}
+  constructor(private instituicaoService: InstituicaoService, private administradorService: AdministradorService) {}
 
     ngOnInit(): void {
       const state = history.state;
-      if (state && state.administrador) {
-        this.administrador = state.administrador;
+      if (state && state.adminstrador) {
+        this.administrador = state.adminstrador;
       }
 
       console.log(this.carregarInstituicoes())
@@ -82,7 +83,19 @@ export class EditarAdministrador implements OnInit {
     this.mensagemErro = null;
     this.mensagemSucesso = null;
 
-
+    this.administradorService.editarAdministrador(this.administrador.cpfOuCnpj, this.administrador).subscribe({
+      next: (administradorAtualizado) => {
+        this.mensagemSucesso = 'Administrador editado com sucesso!';
+        this.isLoading = false;
+        this.administrador = administradorAtualizado;
+        this.router.navigate(['/admin/administrador']);
+      },
+      error: (error) => {
+        this.mensagemErro = 'Erro ao editar Administrador. Tente novamente.';
+        console.error(error);
+        this.isLoading = false;
+      }
+    });
   }
 
 }
