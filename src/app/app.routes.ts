@@ -36,6 +36,8 @@ import { EditarAdministrador } from './pages/admin/gerenciar/administradores/edi
 import { EditarCurso } from './pages/admin/gerenciar/cursos/editar-curso/editar-curso.component';
 import { EditarModulo } from './pages/admin/gerenciar/modulos/editar-modulo/editar-modulo.component';
 import { EditarAula } from './pages/admin/gerenciar/aulas/editar-aula/editar-aula.component';
+import { ListarQuizzComponent } from './pages/admin/gerenciar/quizz/listar-quizz/listar-quizz.component';
+import { CadastrarQuizzComponent } from './pages/admin/gerenciar/quizz/cadastrar-quizz/cadastrar-quizz.component';
 
 export const routes: Routes = [
   {
@@ -225,6 +227,16 @@ export const routes: Routes = [
         path: 'editar-administrador',
         component: EditarAdministrador,
         title: 'Editar Administrador'
+      },
+      {
+        path: 'quizz',
+        component: ListarQuizzComponent,
+        title: 'Listar Quizz'
+      },
+      {
+        path: 'cadastro-quizz',
+        component: CadastrarQuizzComponent,
+        title: 'Cadastro Quizz'
       }
       ]
   },
