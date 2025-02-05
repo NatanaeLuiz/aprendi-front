@@ -1,53 +1,101 @@
-<div class="content-wrapper" >
-  <!-- Content Header (Page header) -->
+<div class="content-wrapper">
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
+        <!-- Cabeçalho se necessário -->
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <!-- left column -->
         <div class="col-md-12">
-
-
-          <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Cadastro de Quizz</h3>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-
             <form>
               <div class="card-body">
+                <div class="row">
+                  <!-- Coluna da esquerda -->
+                  <div class="col-md-6">
+                    <div class="form-group mb-4">
+                      <h5>Tipo de pergunta</h5>
+                      <div class="d-flex">
+                        <div class="form-check me-3">
+                          <input class="form-check-input" type="radio" name="tipoPergunta" id="multipla" value="multipla" [(ngModel)]="tipoPergunta">
+                          <label class="form-check-label" for="multipla">Múltipla Escolha</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="tipoPergunta" id="unica" value="unica" [(ngModel)]="tipoPergunta">
+                          <label class="form-check-label" for="unica">Única Escolha</label>
+                        </div>
+                      </div>
+                    </div>
 
-                <!-- <div class="form-group">
-                  <label for="editor">Descrição da Pergunta:</label>
-                  <ckeditor [editor]="Editor" [(ngModel)]="descricaoCurso"></ckeditor>
-                </div> -->
+                    <!-- Campo de seleção para Curso -->
+                    <div class="form-group mb-4">
+                      <h5>Curso</h5>
+                      <select class="form-control"  name="curso">
+                        <option value="">Selecione um curso</option>
+                        <!-- <option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</option> -->
+                      </select>
+                    </div>
 
+                    <!-- Campo de seleção para Módulo -->
+                    <div class="form-group mb-4">
+                      <h5>Módulo</h5>
+                      <select class="form-control" name="modulo">
+                        <option value="">Selecione um módulo</option>
+                        <!-- <option *ngFor="let modulo of modulos" [value]="modulo">{{ modulo }}</option> -->
+                      </select>
+                    </div>
 
+                    <div class="form-group mb-4">
+                      <h5>Pergunta</h5>
+                      <textarea class="form-control" rows="3" placeholder="Digite seu texto aqui ..."></textarea>
+                    </div>
 
+                    <div class="form-group mb-4">
+                      <h5>Explicação da resposta</h5>
+                      <textarea class="form-control" rows="3" placeholder="Digite seu texto aqui ..."></textarea>
+                    </div>
+                  </div>
 
+                  <!-- Coluna da direita -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h5>Opções de Resposta</h5>
+                      <div *ngFor="let resposta of respostas; let i = index" class="form-group">
+                        <div class="sc-fEOsli coOCoW bg-gray border-radius d-flex align-items-center p-2">
+                          <label class="checkbox">
+                            <input type="checkbox" [(ngModel)]="resposta.marcada" name="marcada{{i}}">
+                            <span class="checkmark"></span>
+                          </label>
+                          <input type="text" class="form-control form-default mx-2" placeholder="Opção de resposta" [(ngModel)]="resposta.opcao" name="opcao{{i}}">
+                          <button type="button" class="btn pr-0 flex-center-default" title="Excluir opção" (click)="removerResposta(i)">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" color="#FC6D5D" height="17" width="17" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn btn-primary mt-2" (click)="adicionarResposta()">Adicionar resposta</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="card-footer">
-                <button type="button" class="btn btn-danger"  >Cancelar</button>
+                <button type="button" class="btn btn-danger">Cancelar</button>
                 <button type="submit" class="btn btn-success" style="margin-left: 15px;">Salvar</button>
-              </div>
               </div>
             </form>
           </div>
-          <!-- /.card -->
         </div>
-        <!--/.col (right) -->
       </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
-  <!-- /.content -->
 </div>
