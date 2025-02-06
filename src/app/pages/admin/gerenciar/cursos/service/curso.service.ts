@@ -12,6 +12,18 @@ export class CursoService {
 
   constructor(private http: HttpClient) {}
 
+
+  cadastrarCurso(curso: Curso): Observable<Curso> {
+    return this.http.post<Curso>(`${this.apiUrl}/cursos/salvar`, curso)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error?.message || 'Erro ao cadastrar curso. Tente novamente.';
+          console.error('Erro ao cadastrar curso:', error);
+          return throwError(() => new Error(errorMessage));
+        })
+      );
+  }
+
   listarCursos(): Observable<Curso[]> {
     return this.http.get<Curso[]>(`${this.apiUrl}/cursos`)
       .pipe(

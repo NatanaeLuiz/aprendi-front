@@ -4,11 +4,11 @@ import { Modulo } from "../../modulos/modulo.model";
 export interface Curso {
   nome: string;
   descricao: string;
-  isAtivo: boolean;
+  ativo: boolean;
   urlBanner: string;
   cargaHoraria: string;
-  dataCriacao: string;  // ou Date dependendo de como o backend envia os dados
-  dataAtualizacao: string;  // ou Date
-  instituicao: Instituicao;
+  dataCriacao: string;
+  dataAtualizacao: string;
+  instituicao: string;
   modulos: Modulo[];
 }

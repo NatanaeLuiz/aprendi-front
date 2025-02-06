@@ -7,10 +7,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 import { Instituicao } from '../../instituicao/model/instituicao.model';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
 import { AdministradorService } from '../service/administrador.service';
+import { Administrador } from '../service/model/administrador.model';
 
 @Component({
   selector: 'app-cadastro-administrador',
@@ -22,24 +23,30 @@ import { AdministradorService } from '../service/administrador.service';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
-    RouterLink
+    RouterLink,
+    ReactiveFormsModule
   ],
   standalone: true,
   templateUrl: './cadastro-administrador.component.html',
   styleUrls: ['./cadastro-administrador.component.css']
 })
 export class CadastroAdministrador implements OnInit {
+
+  formGroup = new FormGroup({
+    text: new FormControl(''), // Define o campo do editor
+  });
+
   instituicoes: Instituicao[] = [];
   perfis: TipoUsuarioEnum[] = [TipoUsuarioEnum.ADMINISTRADOR, TipoUsuarioEnum.DIRETOR, TipoUsuarioEnum.SUPORTE];
-  administrador = {
+  administrador: Administrador = {
     email: '',
     senha: '',
     nome: '',
     sobrenome: '',
     tipoUsuario: TipoUsuarioEnum.ADMINISTRADOR,
     instituicao: '',
-    telefones: [],
-    statusUsuario: false,
+    // telefones: [],
+    statusUsuario: true,
     cpfOuCnpj: ''
   };
 

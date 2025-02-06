@@ -42,6 +42,10 @@
                   <div *ngIf="perfil.invalid && perfil.touched" class="text-danger">O perfil é obrigatório</div>
                 </div>
 
+                <form class="form-group mb-3" [formGroup]="formGroup">
+                  <p-editor formControlName="text" [style]="{ height: '320px' }" />
+                </form>
+
                 <!-- cnpjOuCpf -->
                 <div class="form-group mb-3">
                   <label for="cpfOuCnpj">CPF</label>

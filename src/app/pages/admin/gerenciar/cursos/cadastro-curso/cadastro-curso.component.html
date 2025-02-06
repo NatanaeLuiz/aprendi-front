@@ -1,80 +1,94 @@
-<div class="content-wrapper" >
-  <!-- Content Header (Page header) -->
+<div class="content-wrapper">
   <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-      </div>
-    </div><!-- /.container-fluid -->
+      <div class="row mb-2"></div>
+    </div>
   </section>
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <!-- left column -->
         <div class="col-md-12">
-          <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Cadastro de Curso</h3>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
+
+            <form #form="ngForm" (ngSubmit)="salvarCurso(form)">
               <div class="card-body">
+                <!-- Mensagens -->
+                <div *ngIf="mensagemSucesso" class="alert alert-success">{{ mensagemSucesso }}</div>
+                <div *ngIf="mensagemErro" class="alert alert-danger">{{ mensagemErro }}</div>
+
                 <!-- Nome do Curso -->
                 <div class="form-group mb-3">
                   <label for="nomeCurso">Nome do Curso</label>
-                  <input type="text" class="form-control" id="nomeCurso" placeholder="Digite o nome do curso" required />
+                  <input type="text" class="form-control" [(ngModel)]="curso.nome" name="nomeCurso" required #nome="ngModel" />
+                  <div *ngIf="nome.invalid && nome.touched" class="text-danger">O nome é obrigatório</div>
                 </div>
 
                 <!-- Descrição -->
                 <div class="form-group mb-3">
                   <label for="descricaoCurso">Descrição</label>
-                  <input type="text" class="form-control" id="descricaoCurso" placeholder="Digite a descrição do curso" />
+                  <input type="text" class="form-control" [(ngModel)]="curso.descricao" name="descricaoCurso" />
                 </div>
 
                 <!-- Curso Ativo -->
                 <div class="form-group mb-3">
                   <label for="cursoAtivo">Curso Ativo</label>
-                  <select class="form-control" id="cursoAtivo">
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                  <select class="form-control" [(ngModel)]="curso.ativo" name="cursoAtivo">
+                    <option [ngValue]="true">Sim</option>
+                    <option [ngValue]="false">Não</option>
                   </select>
                 </div>
 
                 <!-- URL do Banner -->
                 <div class="form-group mb-3">
                   <label for="urlBanner">URL do Banner</label>
-                  <input type="text" class="form-control" id="urlBanner" placeholder="Digite a URL do banner" />
+                  <input type="text" class="form-control" [(ngModel)]="curso.urlBanner" name="urlBanner" />
                 </div>
 
                 <!-- Carga Horária -->
                 <div class="form-group mb-3">
                   <label for="cargaHoraria">Carga Horária</label>
-                  <input type="number" class="form-control" id="cargaHoraria" placeholder="Digite a carga horária" />
+                  <input type="number" class="form-control" [(ngModel)]="curso.cargaHoraria" name="cargaHoraria" />
                 </div>
+
+                <!-- Instituição -->
+                <div class="form-group mb-3">
+                  <label for="instituicao">Instituição</label>
+                  <select class="form-control" [(ngModel)]="curso.instituicao" name="instituicao" required #instituicao="ngModel">
+                    <option value="" disabled selected>Selecione uma instituição</option>
+                    <option *ngFor="let inst of instituicoes" [ngValue]="inst.cpfOuCnpj">{{ inst.nomeInstituicao }}</option>
+                  </select>
+                  <div *ngIf="instituicao.invalid && instituicao.touched" class="text-danger">A instituição é obrigatória</div>
+                </div>
+
+                <!-- <mat-form-field appearance="fill">
+                  <mat-label>Instituição</mat-label>
+                  <mat-select [(ngModel)]="curso.instituicao" name="instituicao" required>
+                    <mat-option *ngFor="let inst of instituicoes" [value]="inst.cpfOuCnpj">
+                      {{ inst.nomeInstituicao }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
 
                 <!-- Módulos -->
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                   <label for="modulos">Módulos</label>
-                  <input type="number" class="form-control" id="modulos" placeholder="Digite o número de módulos" />
-                </div>
+                  <input type="number" class="form-control" [(ngModel)]="curso.modulos" name="modulos" />
+                </div> -->
               </div>
-              <!-- /.card-body -->
 
+              <!-- Botões -->
               <div class="card-footer">
-                <button type="button" class="btn btn-danger" [routerLink]="['/admin/cursos']" >Cancelar</button>
-                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Salvar</button>
+                <button type="button" class="btn btn-danger" [routerLink]="['/admin/cursos']">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="form.invalid" style="margin-left: 15px;">Salvar</button>
               </div>
             </form>
           </div>
-          <!-- /.card -->
         </div>
-        <!--/.col (right) -->
       </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
-  <!-- /.content -->
 </div>
