@@ -43,6 +43,7 @@ export class CadastroCurso implements OnInit {
     dataCriacao: '',
     dataAtualizacao: '',
     instituicao: '',
+    uuid: '',
     modulos: []
   };
 
@@ -88,6 +89,7 @@ export class CadastroCurso implements OnInit {
         console.log("curso enviar", this.curso)
         this.mensagemSucesso = 'Curso cadastrado com sucesso!';
         this.isLoading = false;
+        this.router.navigate(['/admin/cursos']);
       },
       error: (error) => {
         console.log("curso enviar", this.curso)

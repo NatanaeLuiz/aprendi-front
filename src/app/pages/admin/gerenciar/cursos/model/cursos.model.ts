@@ -10,5 +10,6 @@ export interface Curso {
   dataCriacao: string;
   dataAtualizacao: string;
   instituicao: string;
+  uuid: string,
   modulos: Modulo[];
 }
