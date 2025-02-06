@@ -59,8 +59,8 @@ export class CursoService {
       );
   }
 
-  editarCurso(uuid: string, aluno: Curso): Observable<Curso> {
-    return this.http.put<Curso>(`${this.apiUrl}/cursos/atualizar/${uuid}`, aluno)
+  editarCurso(uuid: string, camposAlterados: Partial<Curso>): Observable<Curso> {
+    return this.http.put<Curso>(`${this.apiUrl}/cursos/atualizar/${uuid}`, camposAlterados)
       .pipe(
         catchError(error => {
           console.error('Erro ao curso aluno:', error);

@@ -33,7 +33,7 @@ import { HomeProfessorComponent } from './pages/professor/home/home-professor.co
 import { EditarAlunoComponent } from './pages/admin/gerenciar/alunos/editar-aluno/editar-aluno.component';
 import { EditarProfessor } from './pages/admin/gerenciar/professores/editar-professor/editar-professor.component';
 import { EditarAdministrador } from './pages/admin/gerenciar/administradores/editar-administrador/editar-administrador.component';
-import { EditarCurso } from './pages/admin/gerenciar/cursos/editar-curso/editar-curso.component';
+import { EditarCursoComponent } from './pages/admin/gerenciar/cursos/editar-curso/editar-curso.component';
 import { EditarModulo } from './pages/admin/gerenciar/modulos/editar-modulo/editar-modulo.component';
 import { EditarAula } from './pages/admin/gerenciar/aulas/editar-aula/editar-aula.component';
 import { ListarQuizzComponent } from './pages/admin/gerenciar/quizz/listar-quizz/listar-quizz.component';
@@ -160,7 +160,7 @@ export const routes: Routes = [
       },
       {
         path: 'editar-curso',
-        component: EditarCurso,
+        component: EditarCursoComponent,
         title: 'Editar curso'
       },
       {

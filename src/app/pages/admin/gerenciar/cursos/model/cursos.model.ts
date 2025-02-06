@@ -1,4 +1,3 @@
-import { Instituicao } from "../../instituicao/model/instituicao.model";
 import { Modulo } from "../../modulos/modulo.model";
 
 export interface Curso {
