@@ -13,7 +13,7 @@ import { TipoUsuarioEnum } from '../../alunos/model/tipoUsuarioEnum.model';
 import { InstituicaoService } from '../../instituicao/service/instituicao.service';
 
 @Component({
-  selector: 'app-cadastro-curso',
+  selector: 'app-cadastro-professor',
   imports: [
     MatDialogModule,
     CommonModule ,

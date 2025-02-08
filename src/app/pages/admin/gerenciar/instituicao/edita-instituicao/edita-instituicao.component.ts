@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-cadastro-instituicao',
+  selector: 'app-editar-instituicao',
   templateUrl: './edita-instituicao.component.html',
   styleUrl: './edita-instituicao.component.css',
   standalone: true,

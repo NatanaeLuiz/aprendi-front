@@ -30,7 +30,7 @@
                 <!-- Descrição -->
                 <div class="form-group mb-3">
                   <label for="descricaoCurso">Descrição</label>
-                  <input type="text" class="form-control" [(ngModel)]="curso.descricao" name="descricaoCurso" />
+                  <textarea class="form-control" rows="3"  [(ngModel)]="curso.descricao" name="descricaoCurso"  placeholder="Digite seu texto aqui ..."></textarea>
                 </div>
 
                 <!-- Curso Ativo -->
@@ -42,11 +42,11 @@
                   </select>
                 </div>
 
-                <!-- URL do Banner -->
-                <div class="form-group mb-3">
-                  <label for="urlBanner">URL do Banner</label>
-                  <input type="text" class="form-control" [(ngModel)]="curso.urlBanner" name="urlBanner" />
-                </div>
+               <!-- Anexo de imagem -->
+               <div class="form-group mb-3">
+                <label for="videoAula">Anexo de Imagem</label>
+                <input type="file" class="form-control" id="videoAula" accept="video/*" />
+              </div>
 
                 <!-- Carga Horária -->
                 <div class="form-group mb-3">

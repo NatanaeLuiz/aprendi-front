@@ -7,7 +7,7 @@ import { Aluno } from '../model/aluno.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-alunos',
+  selector: 'app-listar-git alunos',
   templateUrl: './listar-alunos.component.html',
   styleUrl: './listar-alunos.component.css',
   standalone: true,

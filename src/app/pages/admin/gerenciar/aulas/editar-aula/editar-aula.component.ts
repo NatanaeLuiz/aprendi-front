@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-cadastro-aula',
+  selector: 'app-editar-aula',
   imports: [
     CommonModule,
     FormsModule,

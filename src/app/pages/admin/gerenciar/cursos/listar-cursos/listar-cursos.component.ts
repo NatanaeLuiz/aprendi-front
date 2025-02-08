@@ -7,7 +7,7 @@ import { CursoService } from '../service/curso.service';
 import { Pagina } from '../../../../utils/pagina.model';
 
 @Component({
-  selector: 'app-cursos',
+  selector: 'app-listar-cursos',
   templateUrl: './listar-cursos.component.html',
   styleUrl: './listar-cursos.component.css',
   standalone: true,

@@ -7,7 +7,7 @@ import { Pagina } from '../../../../utils/pagina.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-alunos',
+  selector: 'app-listar-professor',
   templateUrl: './listar-professor.component.html',
   styleUrl: './listar-professor.component.css',
   standalone: true,

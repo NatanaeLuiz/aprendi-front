@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BackendService } from '../../../../../services/backend.service';
 
 @Component({
-  selector: 'app-cursos',
+  selector: 'app-listar-quizz',
   imports: [],
   templateUrl: './listar-quizz.component.html',
   styleUrl: './listar-quizz.component.css'
@@ -25,8 +25,8 @@ export class ListarQuizzComponent implements OnInit {
       })
   }
 
-  editarCurso(){
-    this.router.navigate(['/admin/editar-curso']);
+  editarQuizz(){
+    this.router.navigate(['/admin/editar-quizz']);
   }
 
   redirecionarCadastroQuizz(){

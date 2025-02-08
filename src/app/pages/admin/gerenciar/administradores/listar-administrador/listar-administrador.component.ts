@@ -7,7 +7,7 @@ import { AdministradorService } from '../service/administrador.service';
 import { Administrador } from '../service/model/administrador.model';
 
 @Component({
-  selector: 'app-alunos',
+  selector: 'app-listar-administrador',
   templateUrl: './listar-administrador.component.html',
   styleUrls: ['./listar-administrador.component.css'],
   standalone: true,

@@ -1,0 +1,63 @@
+/* Container do campo de resposta */
+.sc-fEOsli {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  padding: 10px;
+  /* O display flex e alinhamento já vem definido na classe do container que envolve o campo */
+}
+
+/* Estilização do label que envolve o checkbox */
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+
+/* Esconder o checkbox padrão e criar um customizado */
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+/* Estilização quando o checkbox estiver marcado */
+.checkbox input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* O checkmark pode ser usado para exibir um ícone ou sinal; aqui, definimos uma área com fundo transparente */
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  /* Se preferir, pode incluir um conteúdo via pseudo-elemento, por exemplo: */
+}
+
+/* Opcional: adicionar um pseudo-elemento para exibir uma marca de verificação quando marcado */
+.checkbox input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Ajustes adicionais para o input de resposta */
+.form-default {
+  flex: 1;
+  min-width: 200px;
+}

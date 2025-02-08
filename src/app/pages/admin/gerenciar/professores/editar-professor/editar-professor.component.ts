@@ -14,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Professor } from '../model/professor.model';
 
 @Component({
-  selector: 'app-cadastro-professor',
+  selector: 'app-editar-professor',
   imports: [
     MatDialogModule,
     CommonModule,
