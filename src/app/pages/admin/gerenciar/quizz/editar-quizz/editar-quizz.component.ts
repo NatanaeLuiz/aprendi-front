@@ -15,14 +15,14 @@ interface Resposta {
 }
 
 @Component({
-  selector: 'app-cadastrar-quizz',
+  selector: 'app-editar-quizz',
   imports: [ FormsModule, MatInputModule, MatFormFieldModule, CommonModule, FormsModule],
-  templateUrl: './cadastrar-quizz.component.html',
-  styleUrl: './cadastrar-quizz.component.css'
+  templateUrl: './editar-quizz.component.html',
+  styleUrl: './editar-quizz.component.css'
 })
 
 
-export class CadastrarQuizzComponent implements OnInit {
+export class EditarQuizzComponent implements OnInit {
 
   router = inject(Router)
      // Array que armazenará as opções de resposta

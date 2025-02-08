@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-cursos',
+  selector: 'app-listar-instituicao',
   templateUrl: './listar-instituicao.component.html',
   styleUrl: './listar-instituicao.component.css',
   standalone: true,

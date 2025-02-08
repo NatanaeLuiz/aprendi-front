@@ -15,7 +15,7 @@ import { AdministradorService } from '../service/administrador.service';
 import { Administrador } from '../service/model/administrador.model';
 
 @Component({
-  selector: 'app-cadastro-professor',
+  selector: 'app-editar-administrador',
   imports: [
     MatDialogModule,
     CommonModule,
