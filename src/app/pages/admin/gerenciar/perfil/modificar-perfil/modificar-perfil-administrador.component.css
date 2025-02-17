@@ -1,0 +1,40 @@
+.w-100 {
+  width: 100%;
+}
+
+  .list-unstyled li {
+    margin-bottom: 10px;
+  }
+
+
+  /* Estilo para o container da imagem */
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 200px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.image-container:hover {
+  border-color: #007bff; /* Altere a cor da borda ao passar o mouse */
+  background-color: #e9f5ff; /* Cor de fundo com hover */
+}
+
+.image-container img {
+  max-width: 50%;
+  max-height: 180px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-image-text {
+  font-size: 16px;
+  color: #999;
+  font-weight: 500;
+}
