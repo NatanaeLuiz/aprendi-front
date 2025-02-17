@@ -39,6 +39,7 @@ import { EditarAula } from './pages/admin/gerenciar/aulas/editar-aula/editar-aul
 import { ListarQuizzComponent } from './pages/admin/gerenciar/quizz/listar-quizz/listar-quizz.component';
 import { CadastrarQuizzComponent } from './pages/admin/gerenciar/quizz/cadastrar-quizz/cadastrar-quizz.component';
 import { EditarQuizzComponent } from './pages/admin/gerenciar/quizz/editar-quizz/editar-quizz.component';
+import { Error404Component } from './components/erro404/error-404.component';
 import { PerfilAluno } from './pages/aluno/perfil/tela-perfil/perfil-aluno.component';
 import { PerfilProfessor } from './pages/professor/perfil/tela-perfil/perfil-professor.component';
 import { PerfilAdministrador } from './pages/admin/gerenciar/perfil/tela-perfil/perfil-administrador.component';
@@ -287,6 +288,6 @@ export const routes: Routes = [
     //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {
     path: '**', // Redirecionamento para página não encontrada
-    redirectTo: '/login'
+    component: Error404Component
   }
 ];

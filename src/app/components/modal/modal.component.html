@@ -1,0 +1,15 @@
+  <div *ngIf="showModal" class="modal-backdrop">
+    <div class="modal {{ size }}">
+      <div class="modal-header">
+        <div class="header-content">
+          <div class="title">{{ title }}</div>
+        </div>
+        <div class="close-icon">
+          <i class="bi bi-x" (click)="closeModal()"></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngTemplateOutlet="modalBody"></ng-container>
+      </div>
+    </div>
+  </div>

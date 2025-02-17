@@ -1,0 +1,46 @@
+button.modal-close-btn {
+  background-color: #dc3545; /* Vermelho elegante */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button.modal-close-btn:hover {
+  background-color: #c82333; /* Um tom mais escuro ao passar o mouse */
+  transform: scale(1.05); /* Efeito de leve crescimento */
+}
+
+button.modal-close-btn:focus {
+  outline: 2px solid rgba(220, 53, 69, 0.5);
+}
+  
+.card-primary:not(.card-outline)>.card-header, .card-primary:not(.card-outline)>.card-header a {
+  color: #fff;
+}
+
+.card-primary:not(.card-outline)>.card-header a.active {
+  color: #1f2d3d;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+.nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+}
