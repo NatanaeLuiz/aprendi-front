@@ -1,0 +1,109 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <!-- Cabeçalho se necessário -->
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- Coluna do Perfil -->
+        <div class="col-md-3">
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle" src="/user2-160x160.jpg" alt="User profile picture">
+              </div>
+
+              <h3 class="profile-username text-center">João</h3>
+              <p class="text-muted text-center">Aluno</p>
+
+              <div class="d-flex justify-content-center">
+                <a [routerLink]="['/aluno/modificar-perfil-aluno']" class="btn btn-primary">
+                  <i class="fas fa-edit"></i> <b> Modificar Perfil</b>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna de Detalhes do Usuário -->
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Detalhes do Usuário</h3>
+            </div>
+
+            <div class="card-body">
+              <strong>Nome Completo:</strong>
+              <p class="text-muted">Joao Pedro Sousa</p>
+              <hr>
+
+              <strong>Endereço de e-mail:</strong>
+              <p class="text-muted">joao&#64;email.com</p>
+              <hr>
+
+              <strong>País:</strong>
+              <p class="text-muted">Brasil</p>
+              <hr>
+
+              <strong>Cidade/Município:</strong>
+              <p class="text-muted">São José de Piranhas</p>
+              <hr>
+
+              <strong>Telefone:</strong>
+              <p class="text-muted">(83) 992053-3430</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Nova Coluna de Miscelânea -->
+        <div class="col-md-4">
+
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Relatórios</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled">
+
+                <li>
+                  <strong><a href="/meus-certificados" target="_blank" style="text-decoration:none;">Meus certificados</a></strong>
+                </li>
+                <li>
+                  <strong><a href="/mensagens-forum" target="_blank" style="text-decoration:none;">Visão geral das notas</a></strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Atividade de login</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li>
+                  <strong>Primeiro acesso ao site:</strong><br>
+                  quinta-feira, 12 dez. 2024, 09:35 (67 dias 1 hora)
+                </li>
+                <li>
+                  <strong>Último acesso ao site:</strong><br>
+                  segunda-feira, 17 fev. 2025, 11:13 (4 segundos)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
