@@ -39,6 +39,7 @@ import { EditarAula } from './pages/admin/gerenciar/aulas/editar-aula/editar-aul
 import { ListarQuizzComponent } from './pages/admin/gerenciar/quizz/listar-quizz/listar-quizz.component';
 import { CadastrarQuizzComponent } from './pages/admin/gerenciar/quizz/cadastrar-quizz/cadastrar-quizz.component';
 import { EditarQuizzComponent } from './pages/admin/gerenciar/quizz/editar-quizz/editar-quizz.component';
+import { Error404Component } from './components/erro404/error-404.component';
 
 export const routes: Routes = [
   {
@@ -251,6 +252,6 @@ export const routes: Routes = [
     //{ path: 'editar', component: UserFormComponent, data: { acao: 'Editar' } },
   {
     path: '**', // Redirecionamento para página não encontrada
-    redirectTo: '/login'
+    component: Error404Component
   }
 ];
