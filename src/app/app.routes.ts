@@ -40,6 +40,12 @@ import { ListarQuizzComponent } from './pages/admin/gerenciar/quizz/listar-quizz
 import { CadastrarQuizzComponent } from './pages/admin/gerenciar/quizz/cadastrar-quizz/cadastrar-quizz.component';
 import { EditarQuizzComponent } from './pages/admin/gerenciar/quizz/editar-quizz/editar-quizz.component';
 import { Error404Component } from './components/erro404/error-404.component';
+import { PerfilAluno } from './pages/aluno/perfil/tela-perfil/perfil-aluno.component';
+import { PerfilProfessor } from './pages/professor/perfil/tela-perfil/perfil-professor.component';
+import { PerfilAdministrador } from './pages/admin/gerenciar/perfil/tela-perfil/perfil-administrador.component';
+import { ModificarPerfilAdministrador } from './pages/admin/gerenciar/perfil/modificar-perfil/modificar-perfil-administrador.component';
+import { ModificarPerfilAluno } from './pages/aluno/perfil/modificar-perfil/modificar-perfil-aluno.component';
+import { ModificarPerfilProfessor } from './pages/professor/perfil/modificar-perfil/modificar-perfil-professor.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +61,16 @@ export const routes: Routes = [
     path: 'aluno',
     component: LayoutAlunoComponent,
     children:[
+      {
+        path: 'perfil-aluno',
+        component: PerfilAluno,
+        title: 'Perfil'
+      },
+      {
+        path: 'modificar-perfil-aluno',
+        component: ModificarPerfilAluno,
+        title: 'Editar Perfil'
+      },
       {
         path: 'meus-cursos',
         component: MeusCursosComponent,
@@ -95,6 +111,16 @@ export const routes: Routes = [
     component: LayoutProfessorComponent,
     children:[
       {
+        path: 'perfil-professor',
+        component: PerfilProfessor,
+        title: 'Perfil'
+      },
+      {
+        path: 'modificar-perfil-professor',
+        component: ModificarPerfilProfessor,
+        title: 'Editar Perfil'
+      },
+      {
         path: 'meus-cursos-professor',
         component: MeusCursosProfessorComponent,
         title: 'meus-cursos'
@@ -115,6 +141,16 @@ export const routes: Routes = [
     path: 'admin',
     component: LayoutAdminComponent,
     children:[
+      {
+        path: 'perfil-administrador',
+        component: PerfilAdministrador,
+        title: 'Perfil'
+      },
+      {
+        path: 'modificar-perfil-administrador',
+        component: ModificarPerfilAdministrador,
+        title: 'Editar Perfil'
+      },
       {
         path: 'dashboard',
         component: DashboardComponent,

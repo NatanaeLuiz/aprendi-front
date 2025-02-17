@@ -1,5 +1,7 @@
 export interface Modulo {
-  nome: string;
+  tituloModulo: string;
   descricao: string;
-  ordemModulo: number
+  ordemModulo: number;
+  uuidCurso: string;
+  uuid: string;
 }
