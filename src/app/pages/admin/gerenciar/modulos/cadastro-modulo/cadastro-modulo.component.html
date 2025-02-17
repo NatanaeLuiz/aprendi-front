@@ -43,6 +43,13 @@
                   </select>
                   <div *ngIf="curso.invalid && curso.touched" class="text-danger">O curso é obrigatório</div>
                 </div>
+
+                <!-- Anexo de Imagem -->
+                <div class="form-group mb-3">
+                  <label for="videoAula">Anexo de Imagem</label>
+                  <input type="file" class="form-control" id="videoAula" accept="video/*" />
+                </div>
+
               </div>
 
               <div class="card-footer">
