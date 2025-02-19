@@ -3,10 +3,11 @@ import { NavModuloComponent } from './nav-modulo/nav-modulo.component';
 import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { Modulo } from './modulo';
+import { VideoPlayerComponent } from "../../../components/video-player/video-player.component";
 
 @Component({
   selector: 'app-modulos',
-  imports: [NavModuloComponent, NgFor, NgIf, ModalComponent, NgTemplateOutlet],
+  imports: [NavModuloComponent, NgFor, NgIf, ModalComponent, NgTemplateOutlet, VideoPlayerComponent],
   templateUrl: './modulos.component.html',
   styleUrl: './modulos.component.css'
 })
