@@ -5,15 +5,26 @@ import { CommonModule } from '@angular/common';
 import { ModuloService } from '../service/modulo.service';
 import { Pagina } from '../../../../utils/pagina.model';
 import { Modulo } from '../modulo.model';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-modulos',
   templateUrl: './listar-modulos.component.html',
   styleUrl: './listar-modulos.component.css',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule]
 })
 export class ListarModulosComponent implements OnInit {
+
+  cursoSelecionado: string = ''; // Variável usada no [(ngModel)]
+  erroCurso: boolean = false;
+  cursos = [
+    { id: 1, nome: 'Ciência da Computação' },
+    { id: 2, nome: 'Sistemas de Informação' },
+    { id: 3, nome: 'Engenharia de Software' },
+    { id: 4, nome: 'Análise e Desenvolvimento de Sistemas' },
+    { id: 5, nome: 'Banco de Dados' }
+  ];
 
   modulos: Modulo[] = [];
   isLoading = false;
@@ -69,5 +80,17 @@ export class ListarModulosComponent implements OnInit {
   mudarPagina(pagina: number): void {
     this.paginaAtual = pagina;
     this.carregarModulos();
+  }
+
+  pesquisarModulos(){
+    if (!this.cursoSelecionado) {
+      this.erroCurso = true;
+      return;
+    }
+    this.erroCurso = false;
+
+    console.log('Curso selecionado:', this.cursoSelecionado);
+    // Adicione aqui a lógica para buscar os módulos filtrados pelo curso
+
   }
 }

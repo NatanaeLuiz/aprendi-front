@@ -64,6 +64,11 @@ export class ListarCursosComponent implements OnInit {
     console.log(curso);
   }
 
+  modulosCurso(curso: Curso): void {
+    this.router.navigate(['/admin/modulos'], { state: { curso } });
+    console.log(curso);
+  }
+
   redirecionarCadastroCurso(): void {
     this.router.navigate(['/admin/cadastro-curso']);
   }
